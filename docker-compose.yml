@@ -1,0 +1,26 @@
+services:
+  web:
+    build: .
+    container_name: redeon-landing
+    restart: unless-stopped
+    networks:
+      - traefik_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.redeon-landing.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.redeon-landing.tls=true"
+      - "traefik.http.routers.redeon-landing.entrypoints=web,websecure"
+      - "traefik.http.routers.redeon-landing.tls.certresolver=mytlschallenge"
+      - "traefik.http.middlewares.redeon-landing.headers.SSLRedirect=true"
+      - "traefik.http.middlewares.redeon-landing.headers.STSSeconds=315360000"
+      - "traefik.http.middlewares.redeon-landing.headers.browserXSSFilter=true"
+      - "traefik.http.middlewares.redeon-landing.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.redeon-landing.headers.forceSTSHeader=true"
+      - "traefik.http.middlewares.redeon-landing.headers.SSLHost=${DOMAIN_NAME}"
+      - "traefik.http.middlewares.redeon-landing.headers.STSIncludeSubdomains=true"
+      - "traefik.http.middlewares.redeon-landing.headers.STSPreload=true"
+      - "traefik.http.routers.redeon-landing.middlewares=redeon-landing@docker"
+
+networks:
+  traefik_network:
+    external: true
