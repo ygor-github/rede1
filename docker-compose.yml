@@ -4,7 +4,7 @@ services:
     container_name: redeon-landing
     restart: unless-stopped
     networks:
-      - traefik_network
+      - proxy_net
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.redeon-landing.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
@@ -22,5 +22,5 @@ services:
       - "traefik.http.routers.redeon-landing.middlewares=redeon-landing@docker"
 
 networks:
-  traefik_network:
+  proxy_net:
     external: true
