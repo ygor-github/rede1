@@ -111,4 +111,5 @@ export interface TranslationSchema {
     successDescription: string;
     close: string;
   };
+  whatsappMessage: string;
 }

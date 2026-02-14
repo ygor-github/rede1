@@ -59,10 +59,10 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-dark text-white font-display overflow-x-hidden selection:bg-primary/30 selection:text-white scroll-smooth">
-      <Header 
-        onContactClick={openContactModal} 
-        onNavigate={navigateTo} 
-        language={language} 
+      <Header
+        onContactClick={openContactModal}
+        onNavigate={navigateTo}
+        language={language}
         onLanguageChange={setLanguage}
         t={t}
       />
@@ -70,8 +70,8 @@ const App: React.FC = () => {
         {renderContent()}
       </main>
       <Footer onNavigate={navigateTo} t={t} />
-      <FloatingWhatsApp />
-      
+      <FloatingWhatsApp t={t} />
+
       {isContactModalOpen && (
         <ContactModal onClose={closeContactModal} t={t} />
       )}
