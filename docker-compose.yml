@@ -20,6 +20,15 @@ services:
       - "traefik.http.middlewares.redeon-landing.headers.STSIncludeSubdomains=true"
       - "traefik.http.middlewares.redeon-landing.headers.STSPreload=true"
       - "traefik.http.routers.redeon-landing.middlewares=redeon-landing@docker"
+      # --- Redirección: redeon.cloud → www.redeon.cloud ---
+      - "traefik.http.routers.redeon-root.rule=Host(`${DOMAIN_NAME}`)"
+      - "traefik.http.routers.redeon-root.entrypoints=web,websecure"
+      - "traefik.http.routers.redeon-root.tls=true"
+      - "traefik.http.routers.redeon-root.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.redeon-root.middlewares=redirect-to-www@docker"
+      - "traefik.http.middlewares.redirect-to-www.redirectregex.regex=^https?://${DOMAIN_NAME}(.*)"
+      - "traefik.http.middlewares.redirect-to-www.redirectregex.replacement=https://${SUBDOMAIN}.${DOMAIN_NAME}$${1}"
+      - "traefik.http.middlewares.redirect-to-www.redirectregex.permanent=true"
 
 networks:
   proxy_net:
