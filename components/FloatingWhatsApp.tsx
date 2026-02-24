@@ -6,7 +6,8 @@ interface FloatingWhatsAppProps {
 }
 
 const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ t }) => {
-  const whatsappUrl = `https://wa.me/559998267439?text=${encodeURIComponent(t.whatsappMessage)}`;
+  const whatsappNumber = process.env.WHATSAPP_NUMBER || '5549998267439';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(t.whatsappMessage)}`;
 
   return (
     <a
