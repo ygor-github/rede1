@@ -109,6 +109,8 @@ export interface TranslationSchema {
     submit: string;
     successTitle: string;
     successDescription: string;
+    errorTitle: string;
+    errorDescription: string;
     close: string;
   };
   whatsappMessage: string;

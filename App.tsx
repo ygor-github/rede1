@@ -73,7 +73,7 @@ const App: React.FC = () => {
       <FloatingWhatsApp t={t} />
 
       {isContactModalOpen && (
-        <ContactModal onClose={closeContactModal} t={t} />
+        <ContactModal onClose={closeContactModal} t={t} language={language} />
       )}
     </div>
   );

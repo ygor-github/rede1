@@ -13,7 +13,9 @@ export default defineConfig(({ mode }) => {
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-      'process.env.WHATSAPP_NUMBER': JSON.stringify(env.WHATSAPP_NUMBER)
+      'process.env.WHATSAPP_NUMBER': JSON.stringify(env.WHATSAPP_NUMBER),
+      'process.env.LEAD_WEBHOOK_URL': JSON.stringify(env.LEAD_WEBHOOK_URL),
+      'process.env.LEAD_WEBHOOK_TOKEN': JSON.stringify(env.LEAD_WEBHOOK_TOKEN)
     },
     resolve: {
       alias: {
