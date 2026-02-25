@@ -61,7 +61,7 @@
                     "conditions": [
                         {
                             "id": "has-name",
-                            "leftValue": "={{ $json.name }}",
+                            "leftValue": "={{ $json.body.name }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -70,7 +70,7 @@
                         },
                         {
                             "id": "has-email",
-                            "leftValue": "={{ $json.email }}",
+                            "leftValue": "={{ $json.body.email }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -79,7 +79,7 @@
                         },
                         {
                             "id": "has-company",
-                            "leftValue": "={{ $json.company }}",
+                            "leftValue": "={{ $json.body.company }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -104,11 +104,11 @@
                 "operation": "create",
                 "resource": "lead",
                 "additionalFields": {
-                    "contact_name": "={{ $('Webhook Trigger').item.json.name }}",
-                    "email_from": "={{ $('Webhook Trigger').item.json.email }}",
-                    "partner_name": "={{ $('Webhook Trigger').item.json.company }}",
-                    "description": "={{ $('Webhook Trigger').item.json.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.source }})\nLanguage: {{ $('Webhook Trigger').item.json.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.timestamp }}",
-                    "name": "=Landing - {{ $('Webhook Trigger').item.json.company }}",
+                    "contact_name": "={{ $('Webhook Trigger').item.json.body.name }}",
+                    "email_from": "={{ $('Webhook Trigger').item.json.body.email }}",
+                    "partner_name": "={{ $('Webhook Trigger').item.json.body.company }}",
+                    "description": "={{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.body.source }})\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}",
+                    "name": "=Landing - {{ $('Webhook Trigger').item.json.body.company }}",
                     "type": "lead"
                 }
             },
