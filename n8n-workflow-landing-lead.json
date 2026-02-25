@@ -7,7 +7,7 @@
                 "path": "landing-lead",
                 "responseMode": "responseNode",
                 "options": {
-                    "allowedOrigins": "https://landing.redeon.cloud,https://landing.srv1170741.hstgr.cloud"
+                    "allowedOrigins": "https://www.redeon.cloud,https://redeon.cloud"
                 }
             },
             "id": "d1a1b2c3-0001-4000-8000-000000000001",
@@ -61,7 +61,7 @@
                     "conditions": [
                         {
                             "id": "has-name",
-                            "leftValue": "={{ $json.body.name }}",
+                            "leftValue": "={{ $json.name }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -70,7 +70,7 @@
                         },
                         {
                             "id": "has-email",
-                            "leftValue": "={{ $json.body.email }}",
+                            "leftValue": "={{ $json.email }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -79,7 +79,7 @@
                         },
                         {
                             "id": "has-company",
-                            "leftValue": "={{ $json.body.company }}",
+                            "leftValue": "={{ $json.company }}",
                             "rightValue": "",
                             "operator": {
                                 "type": "string",
@@ -104,11 +104,11 @@
                 "operation": "create",
                 "resource": "lead",
                 "additionalFields": {
-                    "contact_name": "={{ $('Webhook Trigger').item.json.body.name }}",
-                    "email_from": "={{ $('Webhook Trigger').item.json.body.email }}",
-                    "partner_name": "={{ $('Webhook Trigger').item.json.body.company }}",
-                    "description": "={{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.body.source }})\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}",
-                    "name": "=Landing - {{ $('Webhook Trigger').item.json.body.company }}",
+                    "contact_name": "={{ $('Webhook Trigger').item.json.name }}",
+                    "email_from": "={{ $('Webhook Trigger').item.json.email }}",
+                    "partner_name": "={{ $('Webhook Trigger').item.json.company }}",
+                    "description": "={{ $('Webhook Trigger').item.json.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.source }})\nLanguage: {{ $('Webhook Trigger').item.json.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.timestamp }}",
+                    "name": "=Landing - {{ $('Webhook Trigger').item.json.company }}",
                     "type": "lead"
                 }
             },
