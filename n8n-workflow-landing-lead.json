@@ -10,14 +10,15 @@
                     "allowedOrigins": "https://landing.redeon.cloud,https://landing.srv1170741.hstgr.cloud"
                 }
             },
-            "id": "webhook-trigger",
+            "id": "d1a1b2c3-0001-4000-8000-000000000001",
             "name": "Webhook Trigger",
             "type": "n8n-nodes-base.webhook",
             "typeVersion": 2,
             "position": [
                 220,
                 300
-            ]
+            ],
+            "webhookId": "landing-lead"
         },
         {
             "parameters": {
@@ -40,7 +41,7 @@
                     ]
                 }
             },
-            "id": "validate-token",
+            "id": "d1a1b2c3-0001-4000-8000-000000000002",
             "name": "Validate Token",
             "type": "n8n-nodes-base.if",
             "typeVersion": 2,
@@ -89,7 +90,7 @@
                     "combinator": "and"
                 }
             },
-            "id": "validate-data",
+            "id": "d1a1b2c3-0001-4000-8000-000000000003",
             "name": "Validate Data",
             "type": "n8n-nodes-base.if",
             "typeVersion": 2,
@@ -100,47 +101,44 @@
         },
         {
             "parameters": {
-                "method": "POST",
-                "url": "=https://erp.{{ $env.DOMAIN_NAME || 'srv1170741.hstgr.cloud' }}/xmlrpc/2/common",
-                "sendBody": true,
-                "specifyBody": "string",
-                "body": "=<?xml version=\"1.0\"?>\n<methodCall>\n  <methodName>authenticate</methodName>\n  <params>\n    <param><value><string>redeon</string></value></param>\n    <param><value><string>{{ $env.ODOO_USER || 'admin' }}</string></value></param>\n    <param><value><string>{{ $env.ODOO_API_KEY }}</string></value></param>\n    <param><value><struct></struct></value></param>\n  </params>\n</methodCall>",
-                "options": {
-                    "response": {
-                        "response": {
-                            "responseFormat": "text"
-                        }
-                    }
+                "operation": "create",
+                "resource": "lead",
+                "additionalFields": {
+                    "contact_name": "={{ $('Webhook Trigger').item.json.body.name }}",
+                    "email_from": "={{ $('Webhook Trigger').item.json.body.email }}",
+                    "partner_name": "={{ $('Webhook Trigger').item.json.body.company }}",
+                    "description": "={{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.body.source }})\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}",
+                    "name": "=Landing - {{ $('Webhook Trigger').item.json.body.company }}",
+                    "type": "lead"
                 }
             },
-            "id": "odoo-auth",
-            "name": "Odoo Authenticate",
-            "type": "n8n-nodes-base.httpRequest",
-            "typeVersion": 4.2,
+            "id": "d1a1b2c3-0001-4000-8000-000000000004",
+            "name": "Create CRM Lead",
+            "type": "n8n-nodes-base.odoo",
+            "typeVersion": 1,
             "position": [
                 880,
                 180
-            ]
+            ],
+            "credentials": {
+                "odooApi": {
+                    "id": "",
+                    "name": "Asistente Odoo"
+                }
+            }
         },
         {
             "parameters": {
-                "method": "POST",
-                "url": "=https://erp.{{ $env.DOMAIN_NAME || 'srv1170741.hstgr.cloud' }}/xmlrpc/2/object",
-                "sendBody": true,
-                "specifyBody": "string",
-                "body": "=<?xml version=\"1.0\"?>\n<methodCall>\n  <methodName>execute_kw</methodName>\n  <params>\n    <param><value><string>redeon</string></value></param>\n    <param><value><int>{{ $('Odoo Authenticate').item.json.data.match(/<int>(\\d+)<\\/int>/)?.[1] || '2' }}</int></value></param>\n    <param><value><string>{{ $env.ODOO_API_KEY }}</string></value></param>\n    <param><value><string>crm.lead</string></value></param>\n    <param><value><string>create</string></value></param>\n    <param>\n      <value>\n        <array>\n          <data>\n            <value>\n              <struct>\n                <member>\n                  <name>name</name>\n                  <value><string>Landing - {{ $('Webhook Trigger').item.json.body.company }}</string></value>\n                </member>\n                <member>\n                  <name>contact_name</name>\n                  <value><string>{{ $('Webhook Trigger').item.json.body.name }}</string></value>\n                </member>\n                <member>\n                  <name>email_from</name>\n                  <value><string>{{ $('Webhook Trigger').item.json.body.email }}</string></value>\n                </member>\n                <member>\n                  <name>partner_name</name>\n                  <value><string>{{ $('Webhook Trigger').item.json.body.company }}</string></value>\n                </member>\n                <member>\n                  <name>description</name>\n                  <value><string>{{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}</string></value>\n                </member>\n                <member>\n                  <name>type</name>\n                  <value><string>lead</string></value>\n                </member>\n              </struct>\n            </value>\n          </data>\n        </array>\n      </value>\n    </param>\n    <param><value><struct></struct></value></param>\n  </params>\n</methodCall>",
+                "respondWith": "json",
+                "responseBody": "={{ JSON.stringify({ success: true, message: 'Lead created', leadId: $json.id }) }}",
                 "options": {
-                    "response": {
-                        "response": {
-                            "responseFormat": "text"
-                        }
-                    }
+                    "responseCode": 200
                 }
             },
-            "id": "odoo-create-lead",
-            "name": "Create CRM Lead",
-            "type": "n8n-nodes-base.httpRequest",
-            "typeVersion": 4.2,
+            "id": "d1a1b2c3-0001-4000-8000-000000000005",
+            "name": "Respond Success",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.1,
             "position": [
                 1100,
                 180
@@ -149,29 +147,12 @@
         {
             "parameters": {
                 "respondWith": "json",
-                "responseBody": "={ \"success\": true, \"message\": \"Lead created successfully\" }",
-                "options": {
-                    "responseCode": 200
-                }
-            },
-            "id": "respond-success",
-            "name": "Respond Success",
-            "type": "n8n-nodes-base.respondToWebhook",
-            "typeVersion": 1.1,
-            "position": [
-                1320,
-                180
-            ]
-        },
-        {
-            "parameters": {
-                "respondWith": "json",
-                "responseBody": "={ \"success\": false, \"message\": \"Unauthorized\" }",
+                "responseBody": "={{ JSON.stringify({ success: false, message: 'Unauthorized' }) }}",
                 "options": {
                     "responseCode": 403
                 }
             },
-            "id": "respond-unauthorized",
+            "id": "d1a1b2c3-0001-4000-8000-000000000006",
             "name": "Respond Unauthorized",
             "type": "n8n-nodes-base.respondToWebhook",
             "typeVersion": 1.1,
@@ -183,12 +164,12 @@
         {
             "parameters": {
                 "respondWith": "json",
-                "responseBody": "={ \"success\": false, \"message\": \"Missing required fields: name, email, company\" }",
+                "responseBody": "={{ JSON.stringify({ success: false, message: 'Missing required fields: name, email, company' }) }}",
                 "options": {
                     "responseCode": 400
                 }
             },
-            "id": "respond-bad-request",
+            "id": "d1a1b2c3-0001-4000-8000-000000000007",
             "name": "Respond Bad Request",
             "type": "n8n-nodes-base.respondToWebhook",
             "typeVersion": 1.1,
@@ -232,7 +213,7 @@
             "main": [
                 [
                     {
-                        "node": "Odoo Authenticate",
+                        "node": "Create CRM Lead",
                         "type": "main",
                         "index": 0
                     }
@@ -240,17 +221,6 @@
                 [
                     {
                         "node": "Respond Bad Request",
-                        "type": "main",
-                        "index": 0
-                    }
-                ]
-            ]
-        },
-        "Odoo Authenticate": {
-            "main": [
-                [
-                    {
-                        "node": "Create CRM Lead",
                         "type": "main",
                         "index": 0
                     }
