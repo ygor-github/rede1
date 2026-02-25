@@ -1,6 +1,12 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        GEMINI_API_KEY: ${GEMINI_API_KEY}
+        WHATSAPP_NUMBER: ${WHATSAPP_NUMBER}
+        LEAD_WEBHOOK_URL: ${LEAD_WEBHOOK_URL}
+        LEAD_WEBHOOK_TOKEN: ${LEAD_WEBHOOK_TOKEN}
     container_name: redeon-landing
     restart: unless-stopped
     networks:
