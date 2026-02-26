@@ -1,18 +1,19 @@
-
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Language, TranslationSchema } from '../types';
 
 interface HeaderProps {
   onContactClick: () => void;
-  onNavigate: (view: any) => void;
   language: Language;
   onLanguageChange: (lang: Language) => void;
   t: TranslationSchema;
 }
 
-const Header: React.FC<HeaderProps> = ({ onContactClick, onNavigate, language, onLanguageChange, t }) => {
+const Header: React.FC<HeaderProps> = ({ onContactClick, language, onLanguageChange, t }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,12 +39,18 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, onNavigate, language, o
     </div>
   );
 
-  const handleSmoothScroll = (id: string) => {
-    onNavigate('home');
-    setTimeout(() => {
+  const handleSmoothScroll = (id: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    } else {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    }
     setIsMenuOpen(false);
   };
 
@@ -52,19 +59,19 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, onNavigate, language, o
       scrolled ? 'bg-background-dark/95 border-white/10 py-0 backdrop-blur-md' : 'bg-transparent border-transparent py-2'
     }`}>
       <div className="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
-        <button onClick={() => onNavigate('home')} className="flex items-center gap-3 group">
+        <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 group">
           <div className="size-8 text-primary group-hover:scale-110 transition-transform">
             <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
               <path clipRule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fillRule="evenodd"></path>
             </svg>
           </div>
           <h2 className="text-xl font-black tracking-tight uppercase">Redeon<span className="text-primary">.cloud</span></h2>
-        </button>
+        </Link>
         
         <nav className="hidden md:flex items-center gap-10">
-          <button onClick={() => onNavigate('home')} className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.home}</button>
-          <button onClick={() => handleSmoothScroll('solucoes-detalhes')} className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.solutions}</button>
-          <button onClick={() => handleSmoothScroll('precos')} className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.pricing}</button>
+          <Link to="/" className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.home}</Link>
+          <a href="#solucoes-detalhes" onClick={(e) => handleSmoothScroll('solucoes-detalhes', e)} className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.solutions}</a>
+          <a href="#precos" onClick={(e) => handleSmoothScroll('precos', e)} className="text-sm font-medium text-white/70 hover:text-primary transition-colors">{t.nav.pricing}</a>
           
           <div className="h-4 w-px bg-white/10"></div>
           
@@ -88,9 +95,9 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, onNavigate, language, o
 
       <div className={`fixed inset-0 top-20 bg-background-dark/98 z-40 md:hidden transition-transform duration-500 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="flex flex-col items-center justify-center h-full gap-8 p-6">
-          <button onClick={() => { onNavigate('home'); setIsMenuOpen(false); }} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.home}</button>
-          <button onClick={() => handleSmoothScroll('solucoes-detalhes')} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.solutions}</button>
-          <button onClick={() => { onNavigate('about'); setIsMenuOpen(false); }} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.about}</button>
+          <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.home}</Link>
+          <a href="#solucoes-detalhes" onClick={(e) => handleSmoothScroll('solucoes-detalhes', e)} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.solutions}</a>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-2xl font-black text-white/70 hover:text-primary">{t.nav.about}</Link>
           
           <div className="flex gap-4">
             {(['pt', 'en', 'es'] as Language[]).map((lang) => (
