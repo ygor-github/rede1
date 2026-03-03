@@ -35,13 +35,13 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
                   <path d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor"></path>
                 </svg>
               </div>
-              <h2 className="text-xl font-black tracking-tight uppercase">Redeon<span className="text-primary">.cloud</span></h2>
+              <div className="text-xl font-black tracking-tight uppercase">Redeon<span className="text-primary">.cloud</span></div>
             </Link>
             <p className="text-sm text-white/40 leading-relaxed font-medium">
               {t.footer.description}
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
             <div>
               <h4 className="text-sm font-bold mb-8 uppercase tracking-widest text-white/90">{t.footer.company}</h4>
@@ -67,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-white/30 font-medium">© 2024 Redeon.cloud.</p>
         </div>

@@ -19,7 +19,7 @@ const AboutView: React.FC<AboutViewProps> = ({ onContactClick }) => {
               Nossa abordagem é puramente técnica. Não vendemos promessas, entregamos infraestrutura robusta. Cada linha de código Python ou workflow n8n que desenhamos é focado em resiliência e segurança de dados.
             </p>
             <div className="pt-8">
-              <button 
+              <button
                 onClick={onContactClick}
                 className="bg-primary text-background-dark px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform"
               >
@@ -29,15 +29,15 @@ const AboutView: React.FC<AboutViewProps> = ({ onContactClick }) => {
           </div>
           <div className="bg-card-dark border border-white/10 p-8 rounded-3xl space-y-8">
             <div className="space-y-2">
-              <h3 className="text-primary font-black text-4xl">10+</h3>
+              <div className="text-primary font-black text-4xl">10+</div>
               <p className="text-xs font-bold uppercase tracking-widest text-white/40">Anos de Experiência</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-accent-violet font-black text-4xl">500k+</h3>
+              <div className="text-accent-violet font-black text-4xl">500k+</div>
               <p className="text-xs font-bold uppercase tracking-widest text-white/40">Tarefas Automatizadas/Mês</p>
             </div>
             <div className="space-y-2">
-              <h3 className="text-white font-black text-4xl">99.9%</h3>
+              <div className="text-white font-black text-4xl">99.9%</div>
               <p className="text-xs font-bold uppercase tracking-widest text-white/40">Uptime em Infra VPS</p>
             </div>
           </div>
