@@ -15,14 +15,14 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t.pricing.title}</h2>
           <p className="text-white/50 text-lg">{t.pricing.description}</p>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {t.pricing.plans.map((plan, idx) => (
-            <div 
+            <div
               key={idx}
               className={`p-10 bg-card-dark border rounded-2xl flex flex-col relative transition-all duration-500 h-full
-                ${plan.featured 
-                  ? 'border-2 border-accent-violet neon-glow-violet md:scale-105 z-10 shadow-2xl' 
+                ${plan.featured
+                  ? 'border-2 border-accent-violet neon-glow-violet md:scale-105 z-10 shadow-2xl'
                   : 'border-white/10 hover:border-white/20'}`}
             >
               {plan.featured && (
@@ -30,7 +30,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
                   {TRANSLATIONS.pt === t ? 'Destaque' : (TRANSLATIONS.en === t ? 'Featured' : 'Destacado')}
                 </div>
               )}
-              
+
               <div className="mb-10">
                 <h3 className={`text-lg font-bold ${plan.featured ? 'text-white' : 'text-white/70'}`}>
                   {plan.level}
@@ -40,11 +40,11 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
                     {plan.title}
                   </span>
                   {plan.description && (
-                    <span className="ml-2 text-white/40 font-medium">{plan.description}</span>
+                    <span className="ml-2 text-white/70 font-medium">{plan.description}</span>
                   )}
                 </div>
               </div>
-              
+
               <ul className="space-y-5 mb-12 flex-1">
                 {plan.features.map((feature, fIdx) => (
                   <li key={fIdx} className="flex items-start gap-4 text-sm text-white/70 leading-relaxed">
@@ -55,13 +55,13 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
                   </li>
                 ))}
               </ul>
-              
-              <button 
+
+              <button
                 onClick={onContactClick}
                 className={`w-full py-4 rounded-xl text-base font-bold transition-all active:scale-95
-                ${plan.featured 
-                  ? 'bg-accent-violet text-white hover:brightness-110' 
-                  : 'border border-white/10 hover:bg-white/5'}`}>
+                ${plan.featured
+                    ? 'bg-accent-violet text-white hover:brightness-110'
+                    : 'border border-white/10 hover:bg-white/5'}`}>
                 {plan.cta}
               </button>
             </div>

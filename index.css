@@ -1,5 +1,69 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/inter-300.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/inter-400.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/inter-500.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/inter-600.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/inter-700.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/inter-800.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('/fonts/inter-900.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: block;
+    src: url('/fonts/material-symbols.ttf') format('truetype');
+}
+
 @theme {
     --color-primary: #06f9f9;
     --color-accent-violet: #8b5cf6;
@@ -27,12 +91,14 @@
     }
 }
 
-.neon-glow-violet {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
+@layer utilities {
+    .neon-glow-violet {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
 
-.workflow-dot {
-    filter: drop-shadow(0 0 4px #06f9f9);
+    .workflow-dot {
+        filter: drop-shadow(0 0 4px #06f9f9);
+    }
 }
 
 /* Custom scrollbar for dark theme */
