@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #06f9f9;
+    --color-accent-violet: #8b5cf6;
+    --color-background-dark: #050505;
+    --color-card-dark: #0f1414;
+
+    --font-display: "Inter", "sans-serif";
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@layer base {
+    body {
+        @apply bg-background-dark text-white font-display antialiased;
+    }
+}
+
+.neon-glow-violet {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.workflow-dot {
+    filter: drop-shadow(0 0 4px #06f9f9);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}

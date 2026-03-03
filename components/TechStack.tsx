@@ -14,9 +14,9 @@ const TechStack: React.FC = () => {
     <section className="py-20 border-b border-white/5">
       <div className="max-w-[1200px] mx-auto px-6">
 
-        <h3 className="text-center text-white/30 text-xs font-black uppercase tracking-[0.4em] mb-16">
+        <h2 className="text-center text-white/90 text-xs font-black uppercase tracking-[0.4em] mb-16">
           Tecnologias que dominamos
-        </h3>
+        </h2>
         <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
           {logos.map((logo, i) => (
             <img key={i} alt={`${logo.name} Logo`} className="h-8 lg:h-10 w-auto object-contain" src={logo.url} width={120} height={40} loading="lazy" />

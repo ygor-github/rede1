@@ -21,7 +21,7 @@ const CareersView: React.FC = () => {
             <div key={i} className="group p-8 bg-card-dark border border-white/10 rounded-2xl flex flex-col md:flex-row md:items-center justify-between hover:border-primary/50 transition-all cursor-pointer">
               <div>
                 <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{job.title}</h2>
-                <div className="flex gap-4 text-xs font-bold text-white/40 uppercase tracking-widest">
+                <div className="flex gap-4 text-xs font-bold text-white/70 uppercase tracking-widest">
                   <span>{job.type}</span>
                   <span className="text-white/10">•</span>
                   <span>{job.level}</span>

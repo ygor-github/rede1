@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, language, onLanguageCha
         <button
           key={lang}
           onClick={() => onLanguageChange(lang)}
-          className={`px-2 py-0.5 text-[10px] font-black uppercase rounded transition-all ${language === lang ? 'bg-primary text-background-dark' : 'text-white/40 hover:text-white'
+          className={`px-2 py-0.5 text-[10px] font-black uppercase rounded transition-all ${language === lang ? 'bg-primary text-background-dark' : 'text-white/70 hover:text-white'
             }`}
         >
           {lang}
@@ -102,7 +102,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, language, onLanguageCha
               <button
                 key={lang}
                 onClick={() => onLanguageChange(lang)}
-                className={`text-xl font-black uppercase ${language === lang ? 'text-primary' : 'text-white/20'}`}
+                className={`text-xl font-black uppercase ${language === lang ? 'text-primary' : 'text-white/50'}`}
               >
                 {lang}
               </button>

@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
               </div>
               <div className="text-xl font-black tracking-tight uppercase">Redeon<span className="text-primary">.cloud</span></div>
             </Link>
-            <p className="text-sm text-white/40 leading-relaxed font-medium">
+            <p className="text-sm text-white/70 leading-relaxed font-medium">
               {t.footer.description}
             </p>
           </div>
@@ -45,7 +45,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
             <div>
               <h4 className="text-sm font-bold mb-8 uppercase tracking-widest text-white/90">{t.footer.company}</h4>
-              <ul className="space-y-4 text-sm text-white/40 font-medium">
+              <ul className="space-y-4 text-sm text-white/70 font-medium">
                 <li><Link to="/about" className="hover:text-primary transition-colors">{t.footer.about}</Link></li>
                 <li><Link to="/careers" className="hover:text-primary transition-colors">{t.footer.careers}</Link></li>
                 <li><Link to="/" className="hover:text-primary transition-colors">{t.footer.contact}</Link></li>
@@ -53,14 +53,14 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
             </div>
             <div>
               <h4 className="text-sm font-bold mb-8 uppercase tracking-widest text-white/90">{t.footer.legal}</h4>
-              <ul className="space-y-4 text-sm text-white/40 font-medium">
+              <ul className="space-y-4 text-sm text-white/70 font-medium">
                 <li><Link to="/privacy" className="hover:text-primary transition-colors">{t.footer.privacy}</Link></li>
                 <li><Link to="/terms" className="hover:text-primary transition-colors">{t.footer.terms}</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="text-sm font-bold mb-8 uppercase tracking-widest text-white/90">{t.footer.services}</h4>
-              <ul className="space-y-4 text-sm text-white/40 font-medium">
+              <ul className="space-y-4 text-sm text-white/70 font-medium">
                 <li><a href="#solucoes-detalhes" onClick={(e) => handleSmoothScroll('solucoes-detalhes', e)} className="hover:text-primary transition-colors">{t.nav.solutions}</a></li>
                 <li><Link to="/vps" className="hover:text-primary transition-colors font-bold text-primary">{t.footer.hosting}</Link></li>
               </ul>
@@ -69,7 +69,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
         </div>
 
         <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-xs text-white/30 font-medium">© 2024 Redeon.cloud.</p>
+          <p className="text-xs text-white/60 font-medium">© 2024 Redeon.cloud.</p>
         </div>
       </div>
     </footer>

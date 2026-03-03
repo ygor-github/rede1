@@ -30,15 +30,15 @@ const AboutView: React.FC<AboutViewProps> = ({ onContactClick }) => {
           <div className="bg-card-dark border border-white/10 p-8 rounded-3xl space-y-8">
             <div className="space-y-2">
               <div className="text-primary font-black text-4xl">10+</div>
-              <p className="text-xs font-bold uppercase tracking-widest text-white/40">Anos de Experiência</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Anos de Experiência</p>
             </div>
             <div className="space-y-2">
               <div className="text-accent-violet font-black text-4xl">500k+</div>
-              <p className="text-xs font-bold uppercase tracking-widest text-white/40">Tarefas Automatizadas/Mês</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Tarefas Automatizadas/Mês</p>
             </div>
             <div className="space-y-2">
               <div className="text-white font-black text-4xl">99.9%</div>
-              <p className="text-xs font-bold uppercase tracking-widest text-white/40">Uptime em Infra VPS</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-white/70">Uptime em Infra VPS</p>
             </div>
           </div>
         </div>
