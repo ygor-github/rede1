@@ -39,7 +39,7 @@
                 "customResource": "product.template",
                 "operation": "getAll",
                 "filters": {
-                    "custom_filter": "[('all_product_tag_ids.name', '=', 'Landing')]"
+                    "custom_filter": "[('product_tag_ids', 'ilike', 'Landing')]"
                 },
                 "fields": [
                     "name",
