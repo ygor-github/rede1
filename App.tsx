@@ -9,15 +9,41 @@ import AboutView from './components/AboutView';
 import CareersView from './components/CareersView';
 import LegalView from './components/LegalView';
 import VPSView from './components/VPSView';
-import { Language } from './types';
+import { Language, TranslationSchema } from './types';
 import { TRANSLATIONS } from './constants';
+import { fetchLandingData } from './services/api';
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('pt');
+  const [dynamicContent, setDynamicContent] = useState<Partial<TranslationSchema>>({});
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
-  const t = TRANSLATIONS[language];
+  // Load dynamic content from Odoo via n8n
+  useEffect(() => {
+    const loadDynamicData = async () => {
+      const data = await fetchLandingData(language);
+      if (data && Object.keys(data).length > 0) {
+        setDynamicContent(prev => ({ ...prev, ...data }));
+      }
+    };
+    loadDynamicData();
+  }, [language]);
+
+  // Merge hardcoded translations with dynamic content from Odoo
+  const t: TranslationSchema = {
+    ...TRANSLATIONS[language],
+    ...dynamicContent,
+    // Deep merge for specific sections if needed
+    pricing: {
+      ...TRANSLATIONS[language].pricing,
+      ...(dynamicContent.pricing || {})
+    },
+    solutionsPage: {
+      ...TRANSLATIONS[language].solutionsPage,
+      ...(dynamicContent.solutionsPage || {})
+    }
+  };
 
   // Scroll to top on route change
   useEffect(() => {

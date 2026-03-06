@@ -7,6 +7,8 @@ services:
         WHATSAPP_NUMBER: ${WHATSAPP_NUMBER}
         LEAD_WEBHOOK_URL: ${LEAD_WEBHOOK_URL}
         LEAD_WEBHOOK_TOKEN: ${LEAD_WEBHOOK_TOKEN}
+        VITE_LANDING_DATA_URL: ${VITE_LANDING_DATA_URL}
+        VITE_API_KEY: ${VITE_API_KEY}
     container_name: redeon-landing
     restart: unless-stopped
     networks:

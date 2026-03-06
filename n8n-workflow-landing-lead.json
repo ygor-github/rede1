@@ -101,15 +101,32 @@
         },
         {
             "parameters": {
+                "resource": "custom",
+                "customResource": "crm.lead",
                 "operation": "create",
-                "resource": "lead",
-                "additionalFields": {
-                    "contact_name": "={{ $('Webhook Trigger').item.json.body.name }}",
-                    "email_from": "={{ $('Webhook Trigger').item.json.body.email }}",
-                    "partner_name": "={{ $('Webhook Trigger').item.json.body.company }}",
-                    "description": "={{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.body.source }})\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}",
-                    "name": "=Landing - {{ $('Webhook Trigger').item.json.body.company }}",
-                    "type": "lead"
+                "fieldsToCreateOrUpdate": {
+                    "fields": [
+                        {
+                            "fieldName": "name",
+                            "fieldValue": "=Landing - {{ $('Webhook Trigger').item.json.body.company }}"
+                        },
+                        {
+                            "fieldName": "email_from",
+                            "fieldValue": "={{ $('Webhook Trigger').item.json.body.email }}"
+                        },
+                        {
+                            "fieldName": "contact_name",
+                            "fieldValue": "={{ $('Webhook Trigger').item.json.body.name }}"
+                        },
+                        {
+                            "fieldName": "partner_name",
+                            "fieldValue": "={{ $('Webhook Trigger').item.json.body.company }}"
+                        },
+                        {
+                            "fieldName": "description",
+                            "fieldValue": "={{ $('Webhook Trigger').item.json.body.message }}\n\n---\nSource: Landing Page ({{ $('Webhook Trigger').item.json.body.source }})\nLanguage: {{ $('Webhook Trigger').item.json.body.language }}\nTimestamp: {{ $('Webhook Trigger').item.json.body.timestamp }}"
+                        }
+                    ]
                 }
             },
             "id": "d1a1b2c3-0001-4000-8000-000000000004",
@@ -122,7 +139,7 @@
             ],
             "credentials": {
                 "odooApi": {
-                    "id": "",
+                    "id": "yaRfIhALEE7rwaPI",
                     "name": "Asistente Odoo"
                 }
             }
