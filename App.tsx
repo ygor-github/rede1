@@ -16,16 +16,19 @@ import { fetchLandingData } from './services/api';
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('pt');
   const [dynamicContent, setDynamicContent] = useState<Partial<TranslationSchema>>({});
+  const [isLoading, setIsLoading] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
   // Load dynamic content from Odoo via n8n
   useEffect(() => {
     const loadDynamicData = async () => {
+      setIsLoading(true);
       const data = await fetchLandingData(language);
-      if (data && Object.keys(data).length > 0) {
+      if (data && data.pricing) {
         setDynamicContent(prev => ({ ...prev, ...data }));
       }
+      setIsLoading(false);
     };
     loadDynamicData();
   }, [language]);
@@ -34,10 +37,12 @@ const App: React.FC = () => {
   const t: TranslationSchema = {
     ...TRANSLATIONS[language],
     ...dynamicContent,
-    // Deep merge for specific sections if needed
     pricing: {
       ...TRANSLATIONS[language].pricing,
-      ...(dynamicContent.pricing || {})
+      // Only use Odoo plans if they were successfully fetched and are not empty
+      plans: (dynamicContent.pricing?.plans && dynamicContent.pricing.plans.length > 0)
+        ? dynamicContent.pricing.plans
+        : (isLoading ? [] : TRANSLATIONS[language].pricing.plans)
     },
     solutionsPage: {
       ...TRANSLATIONS[language].solutionsPage,
