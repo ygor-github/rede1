@@ -69,7 +69,7 @@ const App: React.FC = () => {
       />
       <main className="animate-[fadeIn_0.5s_ease-out]">
         <Routes>
-          <Route path="/" element={<HomeView onContactClick={openContactModal} t={t} />} />
+          <Route path="/" element={<HomeView onContactClick={openContactModal} t={t} language={language} />} />
           <Route path="/about" element={<AboutView onContactClick={openContactModal} />} />
           <Route path="/careers" element={<CareersView />} />
           <Route path="/vps" element={<VPSView onContactClick={openContactModal} />} />

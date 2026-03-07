@@ -1,13 +1,15 @@
 
 import React from 'react';
-import { TranslationSchema } from '../types';
+import { Language, TranslationSchema } from '../types';
 
 interface PricingProps {
   onContactClick: () => void;
   t: TranslationSchema;
+  language: Language;
 }
 
-const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
+const Pricing: React.FC<PricingProps> = ({ onContactClick, t, language }) => {
+  const featuredLabel: Record<Language, string> = { pt: 'Destaque', en: 'Featured', es: 'Destacado' };
   return (
     <section className="py-24 bg-white/[0.02]" id="precos">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -27,7 +29,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
             >
               {plan.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-violet text-white text-[10px] font-black uppercase px-6 py-1.5 rounded-full tracking-widest">
-                  {TRANSLATIONS.pt === t ? 'Destaque' : (TRANSLATIONS.en === t ? 'Featured' : 'Destacado')}
+                  {featuredLabel[language]}
                 </div>
               )}
 
@@ -73,4 +75,3 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t }) => {
 };
 
 export default Pricing;
-import { TRANSLATIONS } from '../constants';
