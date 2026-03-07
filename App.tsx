@@ -40,8 +40,8 @@ const App: React.FC = () => {
     ...dynamicContent,
     pricing: {
       ...TRANSLATIONS[language].pricing,
-      // Only use Odoo plans if they were successfully fetched and are not empty
-      plans: (dynamicContent.pricing?.plans && dynamicContent.pricing.plans.length > 0)
+      // Use Odoo plans if they are present (even if empty, they officially replace defaults)
+      plans: (dynamicContent.pricing?.plans)
         ? dynamicContent.pricing.plans
         : (isLoading ? [] : TRANSLATIONS[language].pricing.plans)
     },
