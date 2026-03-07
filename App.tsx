@@ -24,6 +24,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const loadDynamicData = async () => {
       setIsLoading(true);
+      setDynamicContent({}); // Reset to ensure loading indicator/state triggers
       const data = await fetchLandingData(language);
       if (data && data.pricing) {
         setDynamicContent(prev => ({ ...prev, ...data }));
