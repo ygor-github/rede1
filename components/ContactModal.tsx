@@ -6,9 +6,10 @@ interface ContactModalProps {
   onClose: () => void;
   t: TranslationSchema;
   language: Language;
+  jobTitle?: string;
 }
 
-const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language }) => {
+const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language, jobTitle }) => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
@@ -38,7 +39,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language }) => 
         body: JSON.stringify({
           ...formData,
           language,
-          source: 'landing-page',
+          source: jobTitle ? 'careers' : 'landing-page',
+          job_title: jobTitle || undefined,
           timestamp: new Date().toISOString()
         })
       });
@@ -104,8 +106,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language }) => 
           </div>
         ) : (
           <div className="p-8 lg:p-12">
-            <h2 className="text-2xl font-black mb-2 tracking-tight uppercase">Redeon<span className="text-primary">.cloud</span></h2>
-            <p className="text-white/50 mb-8 font-medium">{t.contactModal.description}</p>
+            <h2 className="text-2xl font-black mb-2 tracking-tight uppercase">
+              {jobTitle ? 'Apply for' : 'Redeon'}<span className="text-primary">{jobTitle ? ` ${jobTitle}` : '.cloud'}</span>
+            </h2>
+            <p className="text-white/50 mb-8 font-medium">
+              {jobTitle ? 'Fill in the details below to join our team.' : t.contactModal.description}
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>

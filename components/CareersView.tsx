@@ -1,7 +1,13 @@
 
 import React from 'react';
+import { TranslationSchema } from '../types';
 
-const CareersView: React.FC = () => {
+interface CareersViewProps {
+  t: TranslationSchema;
+  onOpenContact: (jobTitle: string) => void;
+}
+
+const CareersView: React.FC<CareersViewProps> = ({ t, onOpenContact }) => {
   const jobs = [
     { title: 'Engenheiro de Automação n8n', type: 'Remoto', level: 'Sênior' },
     { title: 'Desenvolvedor Backend Python', type: 'Híbrido (SP)', level: 'Pleno/Sênior' },
@@ -18,7 +24,11 @@ const CareersView: React.FC = () => {
 
         <div className="space-y-4">
           {jobs.map((job, i) => (
-            <div key={i} className="group p-8 bg-card-dark border border-white/10 rounded-2xl flex flex-col md:flex-row md:items-center justify-between hover:border-primary/50 transition-all cursor-pointer">
+            <div 
+              key={i} 
+              onClick={() => onOpenContact(job.title)}
+              className="group p-8 bg-card-dark border border-white/10 rounded-2xl flex flex-col md:flex-row md:items-center justify-between hover:border-primary/50 transition-all cursor-pointer"
+            >
               <div>
                 <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{job.title}</h2>
                 <div className="flex gap-4 text-xs font-bold text-white/70 uppercase tracking-widest">
@@ -37,7 +47,12 @@ const CareersView: React.FC = () => {
         <div className="mt-20 p-12 bg-accent-violet/10 rounded-3xl border border-accent-violet/20 text-center">
           <h2 className="text-2xl font-bold mb-4">Não encontrou sua vaga?</h2>
           <p className="text-white/60 mb-8">Envie seu currículo para nosso banco de talentos focado em IA e Automação.</p>
-          <a href="mailto:rh@redeon.cloud" className="text-accent-violet font-bold underline text-lg">rh@redeon.cloud</a>
+          <button 
+            onClick={() => onOpenContact('Banco de Talentos')}
+            className="text-accent-violet font-bold underline text-lg underline-offset-4 hover:text-white transition-colors"
+          >
+            rh@redeon.cloud
+          </button>
         </div>
       </div>
     </div>

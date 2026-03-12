@@ -1,49 +1,49 @@
-services:
-  web:
-    build:
-      context: .
-      args:
-        GEMINI_API_KEY: ${GEMINI_API_KEY}
-        WHATSAPP_NUMBER: ${WHATSAPP_NUMBER}
-        LEAD_WEBHOOK_URL: ${LEAD_WEBHOOK_URL}
-        LEAD_WEBHOOK_TOKEN: ${LEAD_WEBHOOK_TOKEN}
-        VITE_LANDING_DATA_URL: ${VITE_LANDING_DATA_URL}
-        VITE_API_KEY: ${VITE_API_KEY}
-    container_name: redeon-landing
-    restart: unless-stopped
-    networks:
-      - proxy_net
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.redeon-landing.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
-      - "traefik.http.routers.redeon-landing.tls=true"
-      - "traefik.http.routers.redeon-landing.entrypoints=web,websecure"
-      - "traefik.http.routers.redeon-landing.tls.certresolver=mytlschallenge"
-      - "traefik.http.middlewares.redeon-landing.headers.SSLRedirect=true"
-      - "traefik.http.middlewares.redeon-landing.headers.STSSeconds=315360000"
-      - "traefik.http.middlewares.redeon-landing.headers.browserXSSFilter=true"
-      - "traefik.http.middlewares.redeon-landing.headers.contentTypeNosniff=true"
-      - "traefik.http.middlewares.redeon-landing.headers.forceSTSHeader=true"
-      - "traefik.http.middlewares.redeon-landing.headers.SSLHost=${DOMAIN_NAME}"
-      - "traefik.http.middlewares.redeon-landing.headers.STSIncludeSubdomains=true"
-      - "traefik.http.middlewares.redeon-landing.headers.STSPreload=true"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://automations.redeon.cloud https://api.wa.link;"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Cross-Origin-Opener-Policy=same-origin"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-Frame-Options=DENY"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-Content-Type-Options=nosniff"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-XSS-Protection=1; mode=block"
-      - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Referrer-Policy=strict-origin-when-cross-origin"
-      - "traefik.http.routers.redeon-landing.middlewares=redeon-landing@docker"
-      # --- Redirección: redeon.cloud → www.redeon.cloud ---
-      - "traefik.http.routers.redeon-root.rule=Host(`${DOMAIN_NAME}`)"
-      - "traefik.http.routers.redeon-root.entrypoints=web,websecure"
-      - "traefik.http.routers.redeon-root.tls=true"
-      - "traefik.http.routers.redeon-root.tls.certresolver=mytlschallenge"
-      - "traefik.http.routers.redeon-root.middlewares=redirect-to-www@docker"
-      - "traefik.http.middlewares.redirect-to-www.redirectregex.regex=^https?://${DOMAIN_NAME}(.*)"
-      - "traefik.http.middlewares.redirect-to-www.redirectregex.replacement=https://${SUBDOMAIN}.${DOMAIN_NAME}$${1}"
-      - "traefik.http.middlewares.redirect-to-www.redirectregex.permanent=true"
+  services:
+    web:
+      build:
+        context: .
+        args:
+          GEMINI_API_KEY: ${GEMINI_API_KEY}
+          WHATSAPP_NUMBER: ${WHATSAPP_NUMBER}
+          LEAD_WEBHOOK_URL: ${LEAD_WEBHOOK_URL}
+          LEAD_WEBHOOK_TOKEN: ${LEAD_WEBHOOK_TOKEN}
+          VITE_LANDING_DATA_URL: ${VITE_LANDING_DATA_URL}
+          VITE_API_KEY: ${VITE_API_KEY}
+      container_name: redeon-landing
+      restart: unless-stopped
+      networks:
+        - proxy_net
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.redeon-landing.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+        - "traefik.http.routers.redeon-landing.tls=true"
+        - "traefik.http.routers.redeon-landing.entrypoints=web,websecure"
+        - "traefik.http.routers.redeon-landing.tls.certresolver=mytlschallenge"
+        - "traefik.http.middlewares.redeon-landing.headers.SSLRedirect=true"
+        - "traefik.http.middlewares.redeon-landing.headers.STSSeconds=315360000"
+        - "traefik.http.middlewares.redeon-landing.headers.browserXSSFilter=true"
+        - "traefik.http.middlewares.redeon-landing.headers.contentTypeNosniff=true"
+        - "traefik.http.middlewares.redeon-landing.headers.forceSTSHeader=true"
+        - "traefik.http.middlewares.redeon-landing.headers.SSLHost=${DOMAIN_NAME}"
+        - "traefik.http.middlewares.redeon-landing.headers.STSIncludeSubdomains=true"
+        - "traefik.http.middlewares.redeon-landing.headers.STSPreload=true"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://automations.redeon.cloud https://api.wa.link;"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Cross-Origin-Opener-Policy=same-origin"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-Frame-Options=DENY"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-Content-Type-Options=nosniff"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.X-XSS-Protection=1; mode=block"
+        - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Referrer-Policy=strict-origin-when-cross-origin"
+        - "traefik.http.routers.redeon-landing.middlewares=redeon-landing@docker"
+        # --- Redirección: redeon.cloud → www.redeon.cloud ---
+        - "traefik.http.routers.redeon-root.rule=Host(`${DOMAIN_NAME}`)"
+        - "traefik.http.routers.redeon-root.entrypoints=web,websecure"
+        - "traefik.http.routers.redeon-root.tls=true"
+        - "traefik.http.routers.redeon-root.tls.certresolver=mytlschallenge"
+        - "traefik.http.routers.redeon-root.middlewares=redirect-to-www@docker"
+        - "traefik.http.middlewares.redirect-to-www.redirectregex.regex=^https?://${DOMAIN_NAME}(.*)"
+        - "traefik.http.middlewares.redirect-to-www.redirectregex.replacement=https://${SUBDOMAIN}.${DOMAIN_NAME}$${1}"
+        - "traefik.http.middlewares.redirect-to-www.redirectregex.permanent=true"
 
-networks:
-  proxy_net:
-    external: true
+  networks:
+    proxy_net:
+      external: true

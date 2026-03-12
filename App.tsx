@@ -17,7 +17,7 @@ const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('pt');
   const [dynamicContent, setDynamicContent] = useState<Partial<TranslationSchema>>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [showContactModal, setShowContactModal] = useState<string | null>(null);
   const location = useLocation();
 
   // Load dynamic content from Odoo via n8n
@@ -40,9 +40,25 @@ const App: React.FC = () => {
     ...dynamicContent,
     pricing: {
       ...TRANSLATIONS[language].pricing,
-      // Use Odoo plans if they are present (even if empty, they officially replace defaults)
-      plans: (dynamicContent.pricing?.plans)
-        ? dynamicContent.pricing.plans
+      // Map Odoo plans to frontend schema, using defaults for missing layout fields (like CTA)
+      plans: (dynamicContent.pricing?.plans && dynamicContent.pricing.plans.length > 0)
+        ? dynamicContent.pricing.plans.map((p: any, index: number) => {
+            const defaultPlan = TRANSLATIONS[language].pricing.plans[index] || TRANSLATIONS[language].pricing.plans[0] || {} as any;
+            
+            const currency = language === 'pt' ? 'R$' : language === 'en' ? '$' : '€';
+            const formattedPrice = p.price 
+              ? (isNaN(Number(p.price)) ? p.price : `${currency} ${p.price}`) 
+              : defaultPlan.title;
+
+            return {
+              level: p.title || defaultPlan.level, // The n8n API sends the title in 'title', which should map to the frontend 'level'
+              title: formattedPrice,               // The n8n API sends the price in 'price', which should map to the frontend 'title'
+              description: p.description || defaultPlan.description,
+              features: p.features && p.features.length > 0 ? p.features : defaultPlan.features,
+              featured: p.featured !== undefined ? p.featured : defaultPlan.featured,
+              cta: p.cta || defaultPlan.cta
+            };
+          })
         : (isLoading ? [] : TRANSLATIONS[language].pricing.plans)
     },
     solutionsPage: {
@@ -56,23 +72,25 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const openContactModal = () => setIsContactModalOpen(true);
-  const closeContactModal = () => setIsContactModalOpen(false);
+  // Function to toggle the contact modal, optionally setting a job title
+  const toggleContactModal = (jobTitle: string | null = null) => {
+    setShowContactModal(jobTitle || (showContactModal ? null : 'default'));
+  };
 
   return (
     <div className="min-h-screen bg-background-dark text-white font-display overflow-x-hidden selection:bg-primary/30 selection:text-white scroll-smooth">
       <Header
-        onContactClick={openContactModal}
+        onContactClick={() => toggleContactModal()}
         language={language}
         onLanguageChange={setLanguage}
         t={t}
       />
       <main className="animate-[fadeIn_0.5s_ease-out]">
         <Routes>
-          <Route path="/" element={<HomeView onContactClick={openContactModal} t={t} language={language} />} />
-          <Route path="/about" element={<AboutView onContactClick={openContactModal} />} />
-          <Route path="/careers" element={<CareersView />} />
-          <Route path="/vps" element={<VPSView onContactClick={openContactModal} />} />
+          <Route path="/" element={<HomeView onContactClick={() => toggleContactModal()} t={t} language={language} />} />
+          <Route path="/about" element={<AboutView onContactClick={() => toggleContactModal()} />} />
+          <Route path="/careers" element={<CareersView t={t} onOpenContact={(title) => toggleContactModal(title)} />} />
+          <Route path="/vps" element={<VPSView onContactClick={() => toggleContactModal()} />} />
           <Route path="/privacy" element={<LegalView title={t.footer.privacy} />} />
           <Route path="/terms" element={<LegalView title={t.footer.terms} />} />
         </Routes>
@@ -80,8 +98,13 @@ const App: React.FC = () => {
       <Footer t={t} />
       <FloatingWhatsApp t={t} />
 
-      {isContactModalOpen && (
-        <ContactModal onClose={closeContactModal} t={t} language={language} />
+      {showContactModal && (
+        <ContactModal 
+          onClose={() => setShowContactModal(null)} 
+          t={t} 
+          language={language} 
+          jobTitle={showContactModal === 'default' ? undefined : showContactModal} 
+        />
       )}
     </div>
   );
