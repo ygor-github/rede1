@@ -8,7 +8,7 @@ interface DeployingViewProps {
 
 const DeployingView: React.FC<DeployingViewProps> = ({ t }) => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const projectName = searchParams.get('project') || "Demo";
+    const projectName = searchParams.get('project') || t.deploying.projectLabel;
 
     useEffect(() => {
         // Limpiar metadatos de Mercado Pago de la URL para mantenerla limpia

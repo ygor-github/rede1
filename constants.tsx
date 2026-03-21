@@ -79,13 +79,13 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     whatsappMessage: 'Olá! Gostaria de saber mais sobre as soluções de automação da Redeon.',
     deploying: {
       badge: 'IMPLANTAÇÃO EM CURSO',
-      title: 'Configurando seu ambiente para',
-      description: 'Estamos clonando o repositório, configurando as variáveis de ambiente e preparando o contêiner Docker. Seu site estará pronto em alguns minutos.',
-      status: 'Estado: Processando arquitetura',
+      title: 'Preparando o espaço digital para',
+      description: 'Estamos configurando um ambiente demonstrativo e orientativo que servirá como base para criar seu projeto sob medida. Em instantes, seu novo ambiente estará pronto para decolar.',
+      status: 'Estado: Orquestrando ambiente',
       server: 'Servidor',
       tech: 'Tecnologia',
       footer: 'Você receberá uma notificação por WhatsApp e Email com sua URL final.',
-      projectLabel: 'Projeto'
+      projectLabel: 'sua nova experiência web'
     }
   },
   en: {
@@ -165,13 +165,13 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     whatsappMessage: 'Hi! I would like to learn more about Redeon\'s automation solutions.',
     deploying: {
       badge: 'DEPLOYMENT IN PROGRESS',
-      title: 'Configuring your environment for',
-      description: 'We are cloning the repository, configuring environment variables, and preparing the Docker container. Your site will be ready in a few minutes.',
-      status: 'Status: Processing architecture',
+      title: 'Preparing the digital space for',
+      description: 'We are setting up a guiding and demonstrative environment that will serve as a basis for creating your custom project. In a few moments, your new environment will be ready to take off.',
+      status: 'Status: Orchestrating environment',
       server: 'Server',
       tech: 'Technology',
       footer: 'You will receive a notification via WhatsApp and Email with your final URL.',
-      projectLabel: 'Project'
+      projectLabel: 'your new web experience'
     }
   },
   es: {
@@ -251,13 +251,13 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     whatsappMessage: '¡Hola! Me gustaría saber más sobre las soluciones de automatización de Redeon.',
     deploying: {
       badge: 'DESPLIEGUE EN CURSO',
-      title: 'Configurando tu entorno para',
-      description: 'Estamos clonando el repositorio, configurando las variables de entorno y preparando el contenedor Docker. Tu sitio estará listo en unos minutos.',
-      status: 'Estado: Procesando arquitectura',
-      server: 'Servidor',
+      title: 'Preparando el espacio digital para',
+      description: 'Estamos configurando un entorno demostrativo y orientativo que servirá como base para crear tu proyecto a medida. En unos instantes, tu nuevo entorno estará listo para despegar.',
+      status: 'Estado: Orquestando entorno',
+      server: 'Server',
       tech: 'Tecnología',
       footer: 'Recibirás una notificación por WhatsApp e Email con tu URL final.',
-      projectLabel: 'Proyecto'
+      projectLabel: 'tu nueva experiencia web'
     }
   }
 };
