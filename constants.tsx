@@ -76,7 +76,17 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     },
     footer: { description: 'Especialistas em automação de processos B2B e hospedagem VPS de alta performance.', company: 'Empresa', legal: 'Legal', services: 'Serviços', about: 'Sobre nós', careers: 'Carreiras', contact: 'Contato', privacy: 'Privacidade', terms: 'Termos', hosting: 'VPS Hosting' },
     contactModal: { title: 'Redeon.cloud', description: 'Preencha os dados abaixo e entraremos em contato.', name: 'Nome Completo', email: 'Email Corporativo', company: 'Empresa', challenge: 'Qual seu desafio?', placeholderName: 'Seu nome', placeholderEmail: 'exemplo@empresa.com', placeholderCompany: 'Nome da sua empresa', placeholderMessage: 'Descreva brevemente o que deseja automatizar...', submit: 'Enviar Solicitação', successTitle: 'Recebemos seu contato!', successDescription: 'Nossa equipe entrará em contato em até 24 horas úteis.', errorTitle: 'Erro ao enviar', errorDescription: 'Ocorreu um problema. Tente novamente ou entre em contato via WhatsApp.', close: 'Fechar' },
-    whatsappMessage: 'Olá! Gostaria de saber mais sobre as soluções de automação da Redeon.'
+    whatsappMessage: 'Olá! Gostaria de saber mais sobre as soluções de automação da Redeon.',
+    deploying: {
+      badge: 'IMPLANTAÇÃO EM CURSO',
+      title: 'Configurando seu ambiente para',
+      description: 'Estamos clonando o repositório, configurando as variáveis de ambiente e preparando o contêiner Docker. Seu site estará pronto em alguns minutos.',
+      status: 'Estado: Processando arquitetura',
+      server: 'Servidor',
+      tech: 'Tecnologia',
+      footer: 'Você receberá uma notificação por WhatsApp e Email com sua URL final.',
+      projectLabel: 'Projeto'
+    }
   },
   en: {
     nav: { solutions: 'Solutions', pricing: 'Pricing', expertise: 'Expertise', start: 'Start Now', home: 'Home', about: 'About Us' },
@@ -152,7 +162,17 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     },
     footer: { description: 'Experts in B2B process automation and high-performance VPS hosting.', company: 'Company', legal: 'Legal', services: 'Services', about: 'About us', careers: 'Careers', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', hosting: 'VPS Hosting' },
     contactModal: { title: 'Redeon.cloud', description: 'Fill in the details below and we will get in touch.', name: 'Full Name', email: 'Business Email', company: 'Company', challenge: 'What is your challenge?', placeholderName: 'Your name', placeholderEmail: 'example@company.com', placeholderCompany: 'Company name', placeholderMessage: 'Briefly describe what you want to automate...', submit: 'Submit Request', successTitle: 'We received your contact!', successDescription: 'Our team will reach out within 24 business hours.', errorTitle: 'Submission error', errorDescription: 'Something went wrong. Please try again or contact us via WhatsApp.', close: 'Close' },
-    whatsappMessage: 'Hi! I would like to learn more about Redeon\'s automation solutions.'
+    whatsappMessage: 'Hi! I would like to learn more about Redeon\'s automation solutions.',
+    deploying: {
+      badge: 'DEPLOYMENT IN PROGRESS',
+      title: 'Configuring your environment for',
+      description: 'We are cloning the repository, configuring environment variables, and preparing the Docker container. Your site will be ready in a few minutes.',
+      status: 'Status: Processing architecture',
+      server: 'Server',
+      tech: 'Technology',
+      footer: 'You will receive a notification via WhatsApp and Email with your final URL.',
+      projectLabel: 'Project'
+    }
   },
   es: {
     nav: { solutions: 'Soluciones', pricing: 'Precios', expertise: 'Experticia', start: 'Empezar Ahora', home: 'Inicio', about: 'Sobre Nosotros' },
@@ -228,6 +248,16 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     },
     footer: { description: 'Expertos en automatización de procesos B2B y hosting VPS de alto rendimiento.', company: 'Empresa', legal: 'Legal', services: 'Servicios', about: 'Sobre nosotros', careers: 'Carreras', contact: 'Contacto', privacy: 'Privacidad', terms: 'Términos', hosting: 'VPS Hosting' },
     contactModal: { title: 'Redeon.cloud', description: 'Complete los datos a continuación y nos pondremos en contacto.', name: 'Nombre Completo', email: 'Correo Corporativo', company: 'Empresa', challenge: '¿Cuál es su desafío?', placeholderName: 'Su nombre', placeholderEmail: 'ejemplo@empresa.com', placeholderCompany: 'Nombre de su empresa', placeholderMessage: 'Describa brevemente qué desea automatizar...', submit: 'Enviar Solicitud', successTitle: '¡Recibimos su contacto!', successDescription: 'Nuestro equipo se pondrá en contacto en menos de 24 horas hábiles.', errorTitle: 'Error al enviar', errorDescription: 'Algo salió mal. Intente de nuevo o contáctenos vía WhatsApp.', close: 'Cerrar' },
-    whatsappMessage: '¡Hola! Me gustaría saber más sobre las soluciones de automatización de Redeon.'
+    whatsappMessage: '¡Hola! Me gustaría saber más sobre las soluciones de automatización de Redeon.',
+    deploying: {
+      badge: 'DESPLIEGUE EN CURSO',
+      title: 'Configurando tu entorno para',
+      description: 'Estamos clonando el repositorio, configurando las variables de entorno y preparando el contenedor Docker. Tu sitio estará listo en unos minutos.',
+      status: 'Estado: Procesando arquitectura',
+      server: 'Servidor',
+      tech: 'Tecnología',
+      footer: 'Recibirás una notificación por WhatsApp e Email con tu URL final.',
+      projectLabel: 'Proyecto'
+    }
   }
 };

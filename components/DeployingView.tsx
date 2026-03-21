@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { TranslationSchema } from '../types';
 
-const DeployingView: React.FC = () => {
+interface DeployingViewProps {
+    t: TranslationSchema;
+}
+
+const DeployingView: React.FC<DeployingViewProps> = ({ t }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const projectName = searchParams.get('project') || "Demo";
 
@@ -24,28 +29,28 @@ const DeployingView: React.FC = () => {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
                     </span>
-                    DESPLIEGUE EN CURSO
+                    {t.deploying.badge}
                 </div>
 
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
-                    Configurando tu entorno para <br />
+                    {t.deploying.title} <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-400">
                         {projectName}
                     </span>
                 </h2>
 
                 <p className="text-text-dim text-lg mb-12 max-w-lg mx-auto leading-relaxed">
-                    Estamos clonando el repositorio, configurando las variables de entorno y preparando el contenedor Docker. Tu sitio estará listo en unos minutos.
+                    {t.deploying.description}
                 </p>
 
                 {/* Progress Bar Container */}
-                <div className="bg-accent/40 border border-white/5 p-8 rounded-3xl backdrop-blur-sm shadow-2xl">
+                <div className="bg-white/5 border border-white/5 p-8 rounded-3xl backdrop-blur-sm shadow-2xl">
                     <div className="flex justify-between items-center mb-4 text-sm font-medium">
-                        <span className="text-text-dim">Estado: Procesando arquitectura</span>
+                        <span className="text-text-dim">{t.deploying.status}</span>
                         <span className="text-primary">45%</span>
                     </div>
                     
-                    <div className="h-2 w-full bg-background-dark rounded-full overflow-hidden border border-white/5">
+                    <div className="h-2 w-full bg-background-dark rounded-full overflow-hidden border border-white/5 relative">
                         <div className="h-full bg-gradient-to-r from-primary/50 to-primary w-full animate-[progress_3s_infinite_ease-in-out]">
                             <div className="absolute inset-0 bg-white/20 blur shadow-[0_0_15px_rgba(193,255,0,0.5)]"></div>
                         </div>
@@ -53,18 +58,18 @@ const DeployingView: React.FC = () => {
 
                     <div className="grid grid-cols-2 gap-4 mt-8">
                         <div className="bg-background-dark/50 p-4 rounded-xl border border-white/5 text-left">
-                            <p className="text-xs text-text-dim uppercase tracking-wider mb-1">Servidor</p>
+                            <p className="text-xs text-text-dim uppercase tracking-wider mb-1">{t.deploying.server}</p>
                             <p className="text-sm font-bold">Hostinger VPS Premium</p>
                         </div>
                         <div className="bg-background-dark/50 p-4 rounded-xl border border-white/5 text-left">
-                            <p className="text-xs text-text-dim uppercase tracking-wider mb-1">Tecnología</p>
+                            <p className="text-xs text-text-dim uppercase tracking-wider mb-1">{t.deploying.tech}</p>
                             <p className="text-sm font-bold">Docker & Traefik</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="mt-12 text-sm text-text-dim flex flex-col items-center gap-4">
-                    <p>Recibirás una notificación por <strong>WhatsApp</strong> y <strong>Email</strong> con tu URL final.</p>
+                    <p>{t.deploying.footer}</p>
                 </div>
             </div>
             

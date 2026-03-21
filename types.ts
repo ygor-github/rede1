@@ -114,4 +114,14 @@ export interface TranslationSchema {
     close: string;
   };
   whatsappMessage: string;
+  deploying: {
+    badge: string;
+    title: string;
+    description: string;
+    status: string;
+    server: string;
+    tech: string;
+    footer: string;
+    projectLabel: string;
+  };
 }

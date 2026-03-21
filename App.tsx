@@ -94,7 +94,7 @@ const App: React.FC = () => {
           <Route path="/vps" element={<VPSView onContactClick={() => toggleContactModal()} />} />
           <Route path="/privacy" element={<LegalView title={t.footer.privacy} />} />
           <Route path="/terms" element={<LegalView title={t.footer.terms} />} />
-          <Route path="/deploying" element={<DeployingView />} />
+          <Route path="/deploying" element={<DeployingView t={t} />} />
         </Routes>
       </main>
       <Footer t={t} />
