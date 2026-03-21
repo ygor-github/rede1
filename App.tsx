@@ -9,6 +9,7 @@ import AboutView from './components/AboutView';
 import CareersView from './components/CareersView';
 import LegalView from './components/LegalView';
 import VPSView from './components/VPSView';
+import DeployingView from './components/DeployingView';
 import { Language, TranslationSchema } from './types';
 import { TRANSLATIONS } from './constants';
 import { fetchLandingData } from './services/api';
@@ -93,6 +94,7 @@ const App: React.FC = () => {
           <Route path="/vps" element={<VPSView onContactClick={() => toggleContactModal()} />} />
           <Route path="/privacy" element={<LegalView title={t.footer.privacy} />} />
           <Route path="/terms" element={<LegalView title={t.footer.terms} />} />
+          <Route path="/deploying" element={<DeployingView />} />
         </Routes>
       </main>
       <Footer t={t} />
