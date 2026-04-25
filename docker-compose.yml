@@ -20,7 +20,7 @@
         - "traefik.http.routers.redeon-landing.entrypoints=web,websecure"
         - "traefik.http.routers.redeon-landing.tls.certresolver=mytlschallenge"
         # Middlewares: Escudo Global + CORS + CSP Específico
-        - "traefik.http.routers.redeon-landing.middlewares=escudo-redeon,cors-redeon,redeon-landing"
+        - "traefik.http.routers.redeon-landing.middlewares=escudo-redeon@docker,cors-redeon@docker,redeon-landing@docker"
         - "traefik.http.middlewares.redeon-landing.headers.customResponseHeaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; connect-src 'self' https://automations.redeon.cloud https://api.wa.link;"
         # --- Redirección: redeon.cloud → www.redeon.cloud ---
         - "traefik.http.routers.redeon-root.rule=Host(`${DOMAIN_NAME}`)"
