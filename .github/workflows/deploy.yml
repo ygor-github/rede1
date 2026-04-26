@@ -1,0 +1,48 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            WHATSAPP_NUMBER=${{ secrets.WHATSAPP_NUMBER }}
+            LEAD_WEBHOOK_URL=${{ secrets.LEAD_WEBHOOK_URL }}
+            LEAD_WEBHOOK_TOKEN=${{ secrets.LEAD_WEBHOOK_TOKEN }}
+            VITE_LANDING_DATA_URL=${{ secrets.VITE_LANDING_DATA_URL }}
+            VITE_API_KEY=${{ secrets.VITE_API_KEY }}
