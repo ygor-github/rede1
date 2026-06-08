@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TranslationSchema } from '../types';
 
 interface ExpertiseProps {
@@ -7,6 +7,7 @@ interface ExpertiseProps {
 }
 
 const Expertise: React.FC<ExpertiseProps> = ({ t }) => {
+  const navigate = useNavigate();
   return (
     <section className="py-24 lg:py-32" id="expertise">
       <div className="max-w-[960px] mx-auto px-6 text-center">
@@ -22,7 +23,10 @@ const Expertise: React.FC<ExpertiseProps> = ({ t }) => {
           {t.expertise.description}
         </p>
 
-        <button className="bg-primary/10 text-primary border border-primary/20 px-10 py-5 rounded-lg font-bold text-lg hover:bg-primary/20 active:scale-95 transition-all">
+        <button 
+          onClick={() => navigate('/about')}
+          className="bg-primary/10 text-primary border border-primary/20 px-10 py-5 rounded-lg font-bold text-lg hover:bg-primary/20 active:scale-95 transition-all"
+        >
           {t.expertise.cta}
         </button>
       </div>
