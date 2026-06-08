@@ -45,7 +45,7 @@ const AboutView: React.FC<AboutViewProps> = ({ onContactClick }) => {
               
               <div className="flex items-center gap-6 mb-8 pb-8 border-b border-white/5">
                 <img 
-                  src="https://media.licdn.com/dms/image/v2/D4D03AQFc0KCkqkTi0g/profile-displayphoto-shrink_400_400/B4DZc2Iau2GYAk-/0/1748959866212?e=1758758400&v=beta&t=B9DYrbPn5IvZYJPwkb1q-SQtDOveVSu5aJHjKxd3N-Y" 
+                  src="https://github.com/ygor-github.png" 
                   alt="Ygor Hernández" 
                   className="w-24 h-24 rounded-2xl border border-primary/30 object-cover shadow-lg"
                 />
