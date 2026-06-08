@@ -3,12 +3,12 @@ import { Language, TranslationSchema } from './types';
 
 export const TRANSLATIONS: Record<Language, TranslationSchema> = {
   pt: {
-    nav: { solutions: 'Soluções', pricing: 'Preços', expertise: 'Expertise', start: 'Começar Agora', home: 'Início', about: 'Sobre Nós' },
+    nav: { solutions: 'Soluções', pricing: 'Planos', expertise: 'Expertise', start: 'Começar Agora', home: 'Início', about: 'Sobre Nós' },
     hero: {
       badge: 'Agência de Automação B2B',
-      title: 'Recupere as',
-      titleAccent: '10 horas semanais que a burocracia te rouba.',
-      description: 'Transformamos sua operação manual em sistemas de alta performance com n8n, Python e infraestrutura cloud escalável.',
+      title: 'Pare de ser o',
+      titleAccent: 'gargalo da sua própria empresa.',
+      description: 'Se o seu negócio depende de copiar e colar dados em planilhas, você está perdendo dinheiro e vendas. Automatizamos sua operação para que você pare de apagar incêndios e comece a escalar de verdade.',
       cta: 'Agendar Consultoria Grátis'
     },
     services: {
@@ -50,51 +50,51 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
       ctaButton: 'Desenhar meu Projeto'
     },
     expertise: {
-      badge: 'Compromisso com a Excelência',
-      title: '10 anos de expertise no setor financeiro transformados em código e automação.',
-      description: 'Não somos apenas desenvolvedores. Entendemos de compliance, segurança de dados e a urgência do mercado corporativo.',
+      badge: 'Compromisso com a Eficiência',
+      title: 'Anos de expertise corporativa transformados em automação.',
+      description: 'Não somos apenas integradores. Entendemos de processos, gargalos operacionais e a urgência do mercado atual.',
       cta: 'Conheça nossa história'
     },
     pricing: {
       title: 'Planos de Implementação',
       description: 'Soluções escaláveis para cada fase do seu negócio.',
       plans: [
-        { level: 'Level 1: MVP', title: 'R$ 800', description: '/implementação', features: ['Automação de Lead Básico', 'Integração Typeform/WhatsApp', 'Setup de 1 Workflow n8n'], cta: 'Selecionar' },
-        { level: 'Level 2: Ecosystem', title: 'Sob consulta', features: ['Ecossistema Customizado', 'Integração com CRMs (Salesforce/Odoo)', 'Dashboards em Tempo Real', 'Suporte Prioritário'], cta: 'Começar Agora', featured: true },
-        { level: 'Level 3: Enterprise', title: 'Escalável', features: ['Infraestrutura VPS Dedicada', 'Desenvolvimento em Python/Linux', 'SLA de Disponibilidade 99.9%'], cta: 'Consultar' }
+        { level: 'Level 1: Essencial', title: 'R$ 800', description: '/implementação', features: ['Automação de Captura Básica', 'Integração CRM/WhatsApp', 'Setup de Fluxo Principal'], cta: 'Selecionar' },
+        { level: 'Level 2: Ecossistema', title: 'Sob consulta', features: ['Ecossistema Customizado', 'Múltiplas Integrações', 'Dashboards de Dados', 'Suporte Prioritário'], cta: 'Começar Agora', featured: true },
+        { level: 'Level 3: Enterprise', title: 'Escalável', features: ['Arquitetura Complexa', 'Automações Avançadas', 'SLA de Disponibilidade 99.9%'], cta: 'Consultar' }
       ]
     },
     faq: {
       title: 'Perguntas Frequentes',
-      description: 'Tire suas dúvidas sobre nosso modelo de trabalho e tecnologia.',
+      description: 'Tire suas dúvidas sobre nosso modelo de trabalho e soluções.',
       items: [
-        { id: 'faq-1', question: 'Como funciona o setup inicial?', answer: 'Iniciamos com uma reunião de diagnóstico para mapear seus processos manuais. Em seguida, desenhamos o fluxo de automação e realizamos a implementação em ambiente de homologação antes do deploy final.' },
-        { id: 'faq-2', question: 'O que é n8n e por que vocês usam?', answer: 'O n8n é uma poderosa ferramenta de workflow automation open-source que permite conectar milhares de aplicativos. Escolhemos o n8n pela flexibilidade técnica, segurança (pode ser auto-hospedado) e por não cobrar por execução de tarefa, reduzindo seu custo operacional.' },
-        { id: 'faq-3', question: 'Meus dados estarão seguros em um servidor próprio?', answer: 'Sim. Diferente de plataformas SaaS tradicionais, nós instalamos sua infraestrutura em um servidor privado (VPS). Isso garante que você tenha total soberania sobre seus dados, atendendo a requisitos rigorosos de LGPD e segurança corporativa.' },
+        { id: 'faq-1', question: 'Como funciona o setup inicial?', answer: 'Iniciamos com uma reunião de diagnóstico para mapear seus processos manuais. Em seguida, desenhamos o fluxo de automação e realizamos a implementação e testes antes da entrega final.' },
+        { id: 'faq-2', question: 'Quais ferramentas vocês utilizam?', answer: 'Utilizamos uma variedade de ferramentas líderes de mercado e open-source dependendo do desafio, focando sempre na solução mais eficiente, segura e com melhor custo-benefício para a sua empresa.' },
+        { id: 'faq-3', question: 'Meus dados estarão seguros?', answer: 'Sim. Adotamos as melhores práticas de segurança e arquitetura de dados, garantindo soberania e adequação às normativas de proteção (LGPD), utilizando ambientes isolados e seguros.' },
         { id: 'faq-4', question: 'Vocês oferecem suporte após a implementação?', answer: 'Sim, oferecemos planos de manutenção e suporte contínuo para garantir que suas automações funcionem 24/7 sem interrupções, além de realizar ajustes finos conforme seu negócio evolui.' }
       ]
     },
-    footer: { description: 'Especialistas em automação de processos B2B e hospedagem VPS de alta performance.', company: 'Empresa', legal: 'Legal', services: 'Serviços', about: 'Sobre nós', careers: 'Carreiras', contact: 'Contato', privacy: 'Privacidade', terms: 'Termos', hosting: 'VPS Hosting' },
+    footer: { description: 'Especialistas em automação de processos B2B e integração de sistemas.', company: 'Empresa', legal: 'Legal', services: 'Serviços', about: 'Sobre nós', careers: 'Carreiras', contact: 'Contato', privacy: 'Privacidade', terms: 'Termos', hosting: 'Previsualização' },
     contactModal: { title: 'Redeon.cloud', description: 'Preencha os dados abaixo e entraremos em contato.', name: 'Nome Completo', email: 'Email Corporativo', company: 'Empresa', challenge: 'Qual seu desafio?', placeholderName: 'Seu nome', placeholderEmail: 'exemplo@empresa.com', placeholderCompany: 'Nome da sua empresa', placeholderMessage: 'Descreva brevemente o que deseja automatizar...', submit: 'Enviar Solicitação', successTitle: 'Recebemos seu contato!', successDescription: 'Nossa equipe entrará em contato em até 24 horas úteis.', errorTitle: 'Erro ao enviar', errorDescription: 'Ocorreu um problema. Tente novamente ou entre em contato via WhatsApp.', close: 'Fechar' },
     whatsappMessage: 'Olá! Gostaria de saber mais sobre as soluções de automação da Redeon.',
     deploying: {
-      badge: 'IMPLANTAÇÃO EM CURSO',
-      title: 'Preparando o espaço digital para',
-      description: 'Estamos configurando um ambiente demonstrativo e orientativo que servirá como base para criar seu projeto sob medida. Em instantes, seu novo ambiente estará pronto para decolar.',
-      status: 'Estado: Orquestrando ambiente',
-      server: 'Servidor',
-      tech: 'Tecnologia',
-      footer: 'Você receberá uma notificação por WhatsApp e Email com sua URL final.',
-      projectLabel: 'sua nova experiência web'
+      badge: 'PREVISUALIZAÇÃO DE PROJETO',
+      title: 'Bem-vindo ao ambiente de',
+      description: 'Este é um espaço dedicado para acompanhamento e demonstração do seu projeto. Aqui validamos as soluções construídas antes da entrega final.',
+      status: 'Status: Ambiente ativo',
+      server: 'Solução',
+      tech: 'Processos',
+      footer: 'Você pode compartilhar este link com sua equipe para testes.',
+      projectLabel: 'validação e testes'
     }
   },
   en: {
     nav: { solutions: 'Solutions', pricing: 'Pricing', expertise: 'Expertise', start: 'Start Now', home: 'Home', about: 'About Us' },
     hero: {
       badge: 'B2B Automation Agency',
-      title: 'Recover the',
-      titleAccent: '10 weekly hours that bureaucracy steals from you.',
-      description: 'We transform your manual operations into high-performance systems with n8n, Python, and scalable cloud infrastructure.',
+      title: 'Stop being the',
+      titleAccent: 'bottleneck of your own company.',
+      description: 'If your business relies on copying and pasting data into spreadsheets, you are losing money and sales. We automate your operations so you can stop putting out fires and start actually scaling.',
       cta: 'Book Free Consultancy'
     },
     services: {
@@ -136,51 +136,51 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
       ctaButton: 'Design my Project'
     },
     expertise: {
-      badge: 'Commitment to Excellence',
-      title: '10 years of financial sector expertise transformed into code and automation.',
-      description: 'We are not just developers. We understand compliance, data security, and corporate urgency.',
+      badge: 'Commitment to Efficiency',
+      title: 'Years of corporate expertise transformed into automation.',
+      description: 'We are not just integrators. We understand processes, operational bottlenecks, and the urgency of the current market.',
       cta: 'Learn our story'
     },
     pricing: {
       title: 'Implementation Plans',
       description: 'Scalable solutions for every stage of your business.',
       plans: [
-        { level: 'Level 1: MVP', title: '$ 150', description: '/implementation', features: ['Basic Lead Automation', 'Typeform/WhatsApp Integration', '1 n8n Workflow Setup'], cta: 'Select' },
-        { level: 'Level 2: Ecosystem', title: 'On request', features: ['Custom Ecosystem', 'CRM Integration (Salesforce/Odoo)', 'Real-time Dashboards', 'Priority Support'], cta: 'Start Now', featured: true },
-        { level: 'Level 3: Enterprise', title: 'Scalable', features: ['Dedicated VPS Infrastructure', 'Python/Linux Development', '99.9% Uptime SLA'], cta: 'Consult' }
+        { level: 'Level 1: Essential', title: '$ 150', description: '/implementation', features: ['Basic Lead Automation', 'CRM/WhatsApp Integration', 'Main Flow Setup'], cta: 'Select' },
+        { level: 'Level 2: Ecosystem', title: 'On request', features: ['Custom Ecosystem', 'Multiple Integrations', 'Data Dashboards', 'Priority Support'], cta: 'Start Now', featured: true },
+        { level: 'Level 3: Enterprise', title: 'Scalable', features: ['Complex Architecture', 'Advanced Automations', '99.9% Uptime SLA'], cta: 'Consult' }
       ]
     },
     faq: {
       title: 'Frequently Asked Questions',
-      description: 'Clear your doubts about our workflow and technology.',
+      description: 'Clear your doubts about our workflow and solutions.',
       items: [
-        { id: 'faq-1', question: 'How does initial setup work?', answer: 'We start with a diagnostic meeting to map your manual processes. Then, we design the automation flow and implement it in a sandbox before final deployment.' },
-        { id: 'faq-2', question: 'What is n8n and why do you use it?', answer: 'n8n is a powerful open-source workflow automation tool. We chose it for technical flexibility, security, and because it does not charge per task execution.' },
-        { id: 'faq-3', question: 'Will my data be secure on my own server?', answer: 'Yes. Unlike traditional SaaS platforms, we install your infrastructure on a private server (VPS), ensuring full data sovereignty.' },
-        { id: 'faq-4', question: 'Do you offer post-implementation support?', answer: 'Yes, we offer maintenance and support plans to ensure your automations run 24/7 without interruption.' }
+        { id: 'faq-1', question: 'How does initial setup work?', answer: 'We start with a diagnostic meeting to map your manual processes. Then, we design the automation flow and implement it, testing everything before final delivery.' },
+        { id: 'faq-2', question: 'What tools do you use?', answer: 'We use a variety of market-leading and open-source tools depending on the challenge, always focusing on the most efficient, secure, and cost-effective solution for your company.' },
+        { id: 'faq-3', question: 'Will my data be secure?', answer: 'Yes. We adopt the best data security and architecture practices, ensuring sovereignty and compliance with data protection regulations, using isolated and secure environments.' },
+        { id: 'faq-4', question: 'Do you offer post-implementation support?', answer: 'Yes, we offer maintenance and continuous support plans to ensure your automations run 24/7 without interruption, and we make fine adjustments as your business evolves.' }
       ]
     },
-    footer: { description: 'Experts in B2B process automation and high-performance VPS hosting.', company: 'Company', legal: 'Legal', services: 'Services', about: 'About us', careers: 'Careers', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', hosting: 'VPS Hosting' },
+    footer: { description: 'Experts in B2B process automation and systems integration.', company: 'Company', legal: 'Legal', services: 'Services', about: 'About us', careers: 'Careers', contact: 'Contact', privacy: 'Privacy', terms: 'Terms', hosting: 'Preview' },
     contactModal: { title: 'Redeon.cloud', description: 'Fill in the details below and we will get in touch.', name: 'Full Name', email: 'Business Email', company: 'Company', challenge: 'What is your challenge?', placeholderName: 'Your name', placeholderEmail: 'example@company.com', placeholderCompany: 'Company name', placeholderMessage: 'Briefly describe what you want to automate...', submit: 'Submit Request', successTitle: 'We received your contact!', successDescription: 'Our team will reach out within 24 business hours.', errorTitle: 'Submission error', errorDescription: 'Something went wrong. Please try again or contact us via WhatsApp.', close: 'Close' },
     whatsappMessage: 'Hi! I would like to learn more about Redeon\'s automation solutions.',
     deploying: {
-      badge: 'DEPLOYMENT IN PROGRESS',
-      title: 'Preparing the digital space for',
-      description: 'We are setting up a guiding and demonstrative environment that will serve as a basis for creating your custom project. In a few moments, your new environment will be ready to take off.',
-      status: 'Status: Orchestrating environment',
-      server: 'Server',
-      tech: 'Technology',
-      footer: 'You will receive a notification via WhatsApp and Email with your final URL.',
-      projectLabel: 'your new web experience'
+      badge: 'PROJECT PREVIEW',
+      title: 'Welcome to the environment for',
+      description: 'This is a dedicated space for monitoring and demonstrating your project. Here we validate the built solutions before final delivery.',
+      status: 'Status: Active environment',
+      server: 'Solution',
+      tech: 'Processes',
+      footer: 'You can share this link with your team for testing.',
+      projectLabel: 'validation and testing'
     }
   },
   es: {
-    nav: { solutions: 'Soluciones', pricing: 'Precios', expertise: 'Experticia', start: 'Empezar Ahora', home: 'Inicio', about: 'Sobre Nosotros' },
+    nav: { solutions: 'Soluciones', pricing: 'Planes', expertise: 'Experticia', start: 'Empezar Ahora', home: 'Inicio', about: 'Sobre Nosotros' },
     hero: {
       badge: 'Agencia de Automatización B2B',
-      title: 'Recupera las',
-      titleAccent: '10 horas semanales que la burocracia te roba.',
-      description: 'Transformamos su operación manual en sistemas de alto rendimiento con n8n, Python e infraestructura cloud escalable.',
+      title: 'Deja de ser el',
+      titleAccent: 'cuello de botella de tu propia empresa.',
+      description: 'Si tu negocio depende de copiar y pegar datos en hojas de cálculo, estás perdiendo dinero y ventas. Automatizamos tu operación para que dejes de apagar incendios y empieces a escalar de verdad.',
       cta: 'Agendar Consultoría Gratis'
     },
     services: {
@@ -222,42 +222,42 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
       ctaButton: 'Diseñar mi Proyecto'
     },
     expertise: {
-      badge: 'Compromiso con la Excelencia',
-      title: '10 años de experiencia en el sector financiero transformados en código y automatización.',
-      description: 'No somos solo desarrolladores. Entendemos de cumplimiento, seguridad de datos y urgencia corporativa.',
+      badge: 'Compromiso con la Eficiencia',
+      title: 'Años de experiencia corporativa transformados en automatización.',
+      description: 'No somos solo integradores. Entendemos de procesos, cuellos de botella y la urgencia del mercado actual.',
       cta: 'Conozca nuestra historia'
     },
     pricing: {
       title: 'Planes de Implementación',
       description: 'Soluciones escalables para cada etapa de su negocio.',
       plans: [
-        { level: 'Nivel 1: MVP', title: '€ 140', description: '/implementación', features: ['Automatización Básica de Leads', 'Integración Typeform/WhatsApp', 'Configuración de 1 Workflow n8n'], cta: 'Seleccionar' },
-        { level: 'Nivel 2: Ecosystem', title: 'Bajo consulta', features: ['Ecosistema Personalizado', 'Integración con CRM (Salesforce/Odoo)', 'Paneles en Tiempo Real', 'Soporte Prioritario'], cta: 'Empezar Ahora', featured: true },
-        { level: 'Nivel 3: Enterprise', title: 'Escalable', features: ['Infraestructura VPS Dedicada', 'Desarrollo en Python/Linux', 'SLA de Disponibilidad 99.9%'], cta: 'Consultar' }
+        { level: 'Nivel 1: Esencial', title: '€ 140', description: '/implementación', features: ['Automatización Básica de Leads', 'Integración CRM/WhatsApp', 'Configuración de Flujo Principal'], cta: 'Seleccionar' },
+        { level: 'Nivel 2: Ecosistema', title: 'Bajo consulta', features: ['Ecosistema Personalizado', 'Múltiples Integraciones', 'Paneles de Datos', 'Soporte Prioritario'], cta: 'Empezar Ahora', featured: true },
+        { level: 'Nivel 3: Enterprise', title: 'Escalable', features: ['Arquitectura Compleja', 'Automatizaciones Avanzadas', 'SLA de Disponibilidad 99.9%'], cta: 'Consultar' }
       ]
     },
     faq: {
-      title: 'Preguntas Frequentes',
-      description: 'Resuelva sus dudas sobre nuestro modelo de trabajo y tecnología.',
+      title: 'Preguntas Frecuentes',
+      description: 'Resuelva sus dudas sobre nuestro modelo de trabajo y soluciones.',
       items: [
-        { id: 'faq-1', question: '¿Cómo funciona la configuración inicial?', answer: 'Comenzamos con una reunión de diagnóstico para mapear sus procesos manuales. Luego, diseñamos el flujo e implementamos en un entorno de pruebas.' },
-        { id: 'faq-2', question: '¿Qué es n8n y por qué lo usan?', answer: 'n8n es una potente herramienta de automatización open-source. La elegimos por su flexibilidad técnica, seguridad y porque no cobra por ejecución de tareas.' },
-        { id: 'faq-3', question: '¿Mis datos estarán seguros en mi propio servidor?', answer: 'Sí. A diferencia de las plataformas SaaS tradicionales, instalamos su infraestructura en un servidor privado (VPS), garantizando soberanía sobre los datos.' },
-        { id: 'faq-4', question: '¿Ofrecen soporte post-implementación?', answer: 'Sí, ofrecemos planes de mantenimiento para asegurar que sus automatizações funcionen 24/7.' }
+        { id: 'faq-1', question: '¿Cómo funciona la configuración inicial?', answer: 'Comenzamos con una reunión de diagnóstico para mapear sus procesos manuales. Luego, diseñamos el flujo y realizamos la implementación, probando todo antes de la entrega final.' },
+        { id: 'faq-2', question: '¿Qué herramientas utilizan?', answer: 'Utilizamos una variedad de herramientas líderes en el mercado y de código abierto según el desafío, enfocándonos siempre en la solución más eficiente, segura y rentable para su empresa.' },
+        { id: 'faq-3', question: '¿Mis datos estarán seguros?', answer: 'Sí. Adoptamos las mejores prácticas de seguridad y arquitectura de datos, garantizando la soberanía y el cumplimiento normativo mediante entornos aislados y seguros.' },
+        { id: 'faq-4', question: '¿Ofrecen soporte post-implementación?', answer: 'Sí, ofrecemos planes de mantenimiento y soporte continuo para asegurar que sus automatizaciones funcionen 24/7 sin interrupciones, haciendo ajustes a medida que su negocio evoluciona.' }
       ]
     },
-    footer: { description: 'Expertos en automatización de procesos B2B y hosting VPS de alto rendimiento.', company: 'Empresa', legal: 'Legal', services: 'Servicios', about: 'Sobre nosotros', careers: 'Carreras', contact: 'Contacto', privacy: 'Privacidad', terms: 'Términos', hosting: 'VPS Hosting' },
+    footer: { description: 'Expertos en automatización de procesos B2B e integración de sistemas.', company: 'Empresa', legal: 'Legal', services: 'Servicios', about: 'Sobre nosotros', careers: 'Carreras', contact: 'Contacto', privacy: 'Privacidad', terms: 'Términos', hosting: 'Previsualización' },
     contactModal: { title: 'Redeon.cloud', description: 'Complete los datos a continuación y nos pondremos en contacto.', name: 'Nombre Completo', email: 'Correo Corporativo', company: 'Empresa', challenge: '¿Cuál es su desafío?', placeholderName: 'Su nombre', placeholderEmail: 'ejemplo@empresa.com', placeholderCompany: 'Nombre de su empresa', placeholderMessage: 'Describa brevemente qué desea automatizar...', submit: 'Enviar Solicitud', successTitle: '¡Recibimos su contacto!', successDescription: 'Nuestro equipo se pondrá en contacto en menos de 24 horas hábiles.', errorTitle: 'Error al enviar', errorDescription: 'Algo salió mal. Intente de nuevo o contáctenos vía WhatsApp.', close: 'Cerrar' },
     whatsappMessage: '¡Hola! Me gustaría saber más sobre las soluciones de automatización de Redeon.',
     deploying: {
-      badge: 'DESPLIEGUE EN CURSO',
-      title: 'Preparando el espacio digital para',
-      description: 'Estamos configurando un entorno demostrativo y orientativo que servirá como base para crear tu proyecto a medida. En unos instantes, tu nuevo entorno estará listo para despegar.',
-      status: 'Estado: Orquestando entorno',
-      server: 'Server',
-      tech: 'Tecnología',
-      footer: 'Recibirás una notificación por WhatsApp e Email con tu URL final.',
-      projectLabel: 'tu nueva experiencia web'
+      badge: 'PREVISUALIZACIÓN DE PROYECTO',
+      title: 'Bienvenido al entorno de',
+      description: 'Este es un espacio dedicado para el seguimiento y demostración de su proyecto. Aquí validamos las soluciones construidas antes de la entrega final.',
+      status: 'Estado: Entorno activo',
+      server: 'Solución',
+      tech: 'Procesos',
+      footer: 'Puede compartir este enlace con su equipo para pruebas.',
+      projectLabel: 'validación y pruebas'
     }
   }
 };

@@ -62,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
               <h3 className="text-sm font-bold mb-8 uppercase tracking-widest text-white/90">{t.footer.services}</h3>
               <ul className="space-y-4 text-sm text-white/70 font-medium">
                 <li><a href="#solucoes-detalhes" onClick={(e) => handleSmoothScroll('solucoes-detalhes', e)} className="hover:text-primary transition-colors">{t.nav.solutions}</a></li>
-                <li><Link to="/vps" className="hover:text-primary transition-colors font-bold text-primary">{t.footer.hosting}</Link></li>
+                <li><Link to="/deploying" className="hover:text-primary transition-colors">{t.footer.hosting}</Link></li>
               </ul>
             </div>
           </div>

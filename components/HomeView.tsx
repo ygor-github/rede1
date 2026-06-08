@@ -4,7 +4,6 @@ import Services from './Services';
 import SolutionsView from './SolutionsView';
 import Expertise from './Expertise';
 import Pricing from './Pricing';
-import TechStack from './TechStack';
 import FAQ from './FAQ';
 import { Language, TranslationSchema } from '../types';
 
@@ -22,7 +21,6 @@ const HomeView: React.FC<HomeViewProps> = ({ onContactClick, t, language }) => {
       <SolutionsView onContactClick={onContactClick} t={t} isSection={true} />
       <Expertise t={t} />
       <Pricing onContactClick={onContactClick} t={t} language={language} />
-      <TechStack />
       <FAQ t={t} />
     </>
   );

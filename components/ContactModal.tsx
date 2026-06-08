@@ -73,13 +73,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language, jobTi
           onClick={onClose}
           className="absolute top-4 right-4 text-white/30 hover:text-white transition-colors"
         >
-          <span className="material-symbols-outlined">close</span>
+          <span className="material-symbols-rounded">close</span>
         </button>
 
         {status === 'success' ? (
           <div className="p-12 text-center space-y-6">
             <div className="size-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
-              <span className="material-symbols-outlined text-4xl">check_circle</span>
+              <span className="material-symbols-rounded text-4xl">check_circle</span>
             </div>
             <h2 className="text-3xl font-black">{t.contactModal.successTitle}</h2>
             <p className="text-white/50">{t.contactModal.successDescription}</p>
@@ -93,7 +93,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language, jobTi
         ) : status === 'error' ? (
           <div className="p-12 text-center space-y-6">
             <div className="size-20 bg-red-500/10 rounded-full flex items-center justify-center text-red-400 mx-auto">
-              <span className="material-symbols-outlined text-4xl">error</span>
+              <span className="material-symbols-rounded text-4xl">error</span>
             </div>
             <h2 className="text-3xl font-black">{t.contactModal.errorTitle}</h2>
             <p className="text-white/50">{t.contactModal.errorDescription}</p>
@@ -175,7 +175,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose, t, language, jobTi
                 {status === 'submitting' ? (
                   <div className="size-5 border-2 border-background-dark/30 border-t-background-dark rounded-full animate-spin" />
                 ) : (
-                  <>{t.contactModal.submit} <span className="material-symbols-outlined text-base">send</span></>
+                  <>{t.contactModal.submit} <span className="material-symbols-rounded text-base">send</span></>
                 )}
               </button>
             </form>

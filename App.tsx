@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -8,7 +9,6 @@ import HomeView from './components/HomeView';
 import AboutView from './components/AboutView';
 import CareersView from './components/CareersView';
 import LegalView from './components/LegalView';
-import VPSView from './components/VPSView';
 import DeployingView from './components/DeployingView';
 import { Language, TranslationSchema } from './types';
 import { TRANSLATIONS } from './constants';
@@ -86,16 +86,17 @@ const App: React.FC = () => {
         onLanguageChange={setLanguage}
         t={t}
       />
-      <main className="animate-[fadeIn_0.5s_ease-out]">
-        <Routes>
-          <Route path="/" element={<HomeView onContactClick={() => toggleContactModal()} t={t} language={language} />} />
-          <Route path="/about" element={<AboutView onContactClick={() => toggleContactModal()} />} />
-          <Route path="/careers" element={<CareersView t={t} onOpenContact={(title) => toggleContactModal(title)} />} />
-          <Route path="/vps" element={<VPSView onContactClick={() => toggleContactModal()} />} />
-          <Route path="/privacy" element={<LegalView title={t.footer.privacy} />} />
-          <Route path="/terms" element={<LegalView title={t.footer.terms} />} />
-          <Route path="/deploying" element={<DeployingView t={t} />} />
-        </Routes>
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomeView onContactClick={() => toggleContactModal()} t={t} language={language} />} />
+            <Route path="/about" element={<AboutView onContactClick={() => toggleContactModal()} />} />
+            <Route path="/careers" element={<CareersView t={t} onOpenContact={(title) => toggleContactModal(title)} />} />
+            <Route path="/privacy" element={<LegalView title={t.footer.privacy} />} />
+            <Route path="/terms" element={<LegalView title={t.footer.terms} />} />
+            <Route path="/deploying" element={<DeployingView t={t} />} />
+          </Routes>
+        </AnimatePresence>
       </main>
       <Footer t={t} />
       <FloatingWhatsApp t={t} />

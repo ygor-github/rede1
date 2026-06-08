@@ -28,7 +28,7 @@ const VPSView: React.FC<VPSViewProps> = ({ onContactClick }) => {
               { label: 'Segurança', val: 'DDoS Protect', icon: 'shield' },
             ].map((spec, i) => (
               <div key={i} className="bg-card-dark border border-white/5 p-6 rounded-2xl">
-                <span className="material-symbols-outlined text-primary mb-4">{spec.icon}</span>
+                <span className="material-symbols-rounded text-primary mb-4">{spec.icon}</span>
                 <p className="text-xs text-white/60 font-bold uppercase mb-1">{spec.label}</p>
                 <p className="text-lg font-black">{spec.val}</p>
               </div>

@@ -1,6 +1,79 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { TranslationSchema } from '../types';
+
+const CategoryAnimation = ({ icon }: { icon: string }) => {
+  if (icon === 'trending_up') {
+    return (
+      <div className="relative w-full h-full flex items-end justify-center gap-3">
+         {[1, 2, 3, 4, 5].map((i) => (
+            <motion.div 
+               key={i}
+               className="w-6 md:w-10 bg-gradient-to-t from-primary/10 to-primary/40 rounded-t-lg border-t border-primary/50"
+               initial={{ height: "10%" }}
+               animate={{ height: `${20 + i * 15}%` }}
+               transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse', delay: i * 0.2 }}
+            />
+         ))}
+         <motion.div 
+           className="absolute inset-0 flex items-center justify-center"
+           animate={{ y: [0, -15, 0], opacity: [0.5, 1, 0.5] }}
+           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+         >
+           <div className="size-24 rounded-full bg-primary/10 blur-xl absolute"></div>
+           <span className="material-symbols-rounded text-[80px] text-primary relative z-10">trending_up</span>
+         </motion.div>
+      </div>
+    );
+  }
+  
+  if (icon === 'hub') {
+    return (
+      <div className="relative size-full flex items-center justify-center">
+        <motion.div
+           className="absolute size-32 border border-accent-violet/40 rounded-full border-dashed"
+           animate={{ rotate: 360 }}
+           transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+        />
+        <motion.div
+           className="absolute size-48 border border-primary/20 rounded-full"
+           animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="size-24 rounded-full bg-accent-violet/10 blur-xl absolute"></div>
+        <span className="material-symbols-rounded text-[80px] text-white/60 relative z-10 animate-pulse">hub</span>
+      </div>
+    );
+  }
+
+  if (icon === 'support_agent') {
+    return (
+      <div className="relative size-full flex items-center justify-center">
+        <motion.div
+           className="absolute -left-4 top-4 bg-primary/20 p-4 rounded-3xl rounded-bl-none border border-primary/40 backdrop-blur-sm"
+           animate={{ y: [0, -15, 0], opacity: [0, 1, 0] }}
+           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <span className="material-symbols-rounded text-primary text-3xl">forum</span>
+        </motion.div>
+        
+        <motion.div
+           className="absolute -right-4 bottom-4 bg-accent-violet/20 p-4 rounded-3xl rounded-br-none border border-accent-violet/40 backdrop-blur-sm"
+           animate={{ y: [0, 15, 0], opacity: [0, 1, 0] }}
+           transition={{ duration: 3, repeat: Infinity, delay: 1.5, ease: 'easeInOut' }}
+        >
+          <span className="material-symbols-rounded text-accent-violet text-3xl">smart_toy</span>
+        </motion.div>
+        
+        <div className="size-24 rounded-full bg-white/5 blur-xl absolute"></div>
+        <span className="material-symbols-rounded text-[80px] text-white/40 relative z-10">support_agent</span>
+      </div>
+    );
+  }
+
+  return <span className="material-symbols-rounded text-[80px] text-white/20">{icon}</span>;
+};
 
 interface SolutionsViewProps {
   onContactClick: () => void;
@@ -29,7 +102,7 @@ const SolutionsView: React.FC<SolutionsViewProps> = ({ onContactClick, t, isSect
             <div key={idx} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
               <div className="flex-1 space-y-8">
                 <div className="inline-flex items-center gap-3 text-primary">
-                  <span className="material-symbols-outlined text-4xl">{category.icon}</span>
+                  <span className="material-symbols-rounded text-4xl">{category.icon}</span>
                   <span className="text-xs font-black uppercase tracking-[0.3em]">{category.subtitle}</span>
                 </div>
                 <h3 className="text-4xl lg:text-5xl font-black tracking-tight">{category.title}</h3>
@@ -53,8 +126,8 @@ const SolutionsView: React.FC<SolutionsViewProps> = ({ onContactClick, t, isSect
                       ))}
                     </div>
                   </div>
-                  <div className="z-10 text-center group-hover:scale-110 transition-transform duration-500">
-                    <span className="material-symbols-outlined text-8xl text-white/20">{category.icon}</span>
+                  <div className="z-10 size-full py-8 text-center group-hover:scale-105 transition-transform duration-500">
+                    <CategoryAnimation icon={category.icon} />
                   </div>
                 </div>
               </div>
@@ -65,7 +138,7 @@ const SolutionsView: React.FC<SolutionsViewProps> = ({ onContactClick, t, isSect
         {!isSection && (
           <div className="mt-40 p-12 lg:p-24 bg-primary text-background-dark rounded-[40px] text-center relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:rotate-12 transition-transform">
-               <span className="material-symbols-outlined text-[200px]">rocket_launch</span>
+               <span className="material-symbols-rounded text-[200px]">rocket_launch</span>
             </div>
             <h2 className="text-4xl lg:text-6xl font-black mb-10 relative z-10">
               {t.solutionsPage.ctaTitle}

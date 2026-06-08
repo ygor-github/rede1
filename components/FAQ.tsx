@@ -37,7 +37,7 @@ const FAQ: React.FC<FAQProps> = ({ t }) => {
                   <span className={`text-lg font-medium transition-colors ${isOpen ? 'text-primary' : 'text-white group-hover:text-primary'}`}>
                     {item.question}
                   </span>
-                  <span className={`material-symbols-outlined text-white/30 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent-violet' : ''}`}>
+                  <span className={`material-symbols-rounded text-white/30 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent-violet' : ''}`}>
                     expand_more
                   </span>
                 </button>

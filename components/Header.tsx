@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick, language, onLanguageCha
           className="md:hidden text-white p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <span className="material-symbols-outlined">{isMenuOpen ? 'close' : 'menu'}</span>
+          <span className="material-symbols-rounded">{isMenuOpen ? 'close' : 'menu'}</span>
         </button>
       </div>
 

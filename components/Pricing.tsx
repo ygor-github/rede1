@@ -20,14 +20,14 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t, language }) => {
 
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {t.pricing.plans.map((plan, idx) => (
-            <div
-              key={idx}
-              className={`p-10 bg-card-dark border rounded-2xl flex flex-col relative transition-all duration-500 h-full
-                ${plan.featured
-                  ? 'border-2 border-accent-violet neon-glow-violet md:scale-105 z-10 shadow-2xl'
-                  : 'border-white/10 hover:border-white/20'}`}
-            >
-              {plan.featured && (
+            <div 
+              key={idx} 
+              className={`relative p-8 rounded-3xl border transition-all duration-300 hover:scale-[1.02] ${
+                plan.featured 
+                  ? 'bg-gradient-to-b from-[#0B1026] to-[#060816] border-accent-violet/30 shadow-[0_0_50px_rgba(139,92,246,0.15)]' 
+                  : 'bg-[#0B1026]/50 border-white/5 hover:border-white/10'
+              }`}
+            >  {plan.featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-violet text-white text-[10px] font-black uppercase px-6 py-1.5 rounded-full tracking-widest">
                   {featuredLabel[language]}
                 </div>
@@ -50,7 +50,7 @@ const Pricing: React.FC<PricingProps> = ({ onContactClick, t, language }) => {
               <ul className="space-y-5 mb-12 flex-1">
                 {plan.features.map((feature, fIdx) => (
                   <li key={fIdx} className="flex items-start gap-4 text-sm text-white/70 leading-relaxed">
-                    <span className={`material-symbols-outlined text-sm mt-0.5 ${plan.featured ? 'text-accent-violet' : 'text-primary'}`}>
+                    <span className={`material-symbols-rounded text-sm mt-0.5 ${plan.featured ? 'text-accent-violet' : 'text-primary'}`}>
                       check_circle
                     </span>
                     {feature}
