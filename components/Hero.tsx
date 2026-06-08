@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { TranslationSchema } from '../types';
 
 interface HeroProps {
@@ -9,6 +9,8 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onContactClick, t }) => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative pt-10 pb-20 lg:pt-20 lg:pb-32 overflow-hidden bg-aurora">
       <div className="absolute inset-0 bg-background-dark/40"></div>
@@ -40,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick, t }) => {
             <motion.button 
               whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(79, 124, 255, 0.4)" }}
               whileTap={{ scale: 0.98 }}
-              onClick={onContactClick}
+              onClick={() => navigate('/about')}
               className="bg-accent-blue text-white px-8 py-4 rounded-xl text-base font-bold flex items-center gap-2 transition-all"
             >
               {t.hero.cta}
